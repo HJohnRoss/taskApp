@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+#root {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media (max-width: 75em) {
+  #root {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 56.25em) {
+  #root {
+    font-size: 50%;
+  }
+}
+@media (min-width: 112.5em) {
+  #root {
+    font-size: 75%;
+  }
+}
+
+#root {
+  font-family: "Roboto", sans-serif;
+  color: #252A34;
+  font-weight: 300;
+  line-height: 1.6;
+}
+@media (max-width: 56.25em) {
+  #root {
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
