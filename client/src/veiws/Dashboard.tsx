@@ -1,10 +1,13 @@
+import TopNav from "../components/navbars/TopNav";
+import SideNav from "../components/navbars/SideNav";
 
 const dashboard = () => {
   return (
     <>
-      <h1>Hello World</h1>
+      <TopNav />
+      <SideNav/>
     </>
-  )
-}
+  );
+};
 
-export default dashboard
+export default dashboard;

@@ -8,8 +8,6 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-
-
     "watch:sass": "sass src/scss/main.scss src/css/style.css -w",
     "compile:sass": "sass src/scss/main.scss src/css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' src/css/style.comp.css -o src/css/style.prefix.css",
@@ -19,6 +17,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
     "sass": "^1.62.1"
   },
   "devDependencies": {
