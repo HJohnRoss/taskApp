@@ -51,7 +51,7 @@
 .topNav__list {
   display: flex;
   list-style: none;
-  width: 25%;
+  width: 5%;
   justify-content: space-between;
   margin-left: 1rem;
   align-items: center;
@@ -82,18 +82,44 @@
 }
 
 .sideNav {
-  width: 25rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  width: 15rem;
+  position: relative;
+  margin-top: 2rem;
+  height: 50vh;
+  /* top: 0;
+  bottom: 0; */
   background-color: rgba(37, 42, 52, 0.1);
   border-radius: 1rem;
   box-shadow: 0.5rem 0.7rem 1rem rgba(37, 42, 52, 0.1);
   z-index: 99;
+  padding: 1rem;
+}
+.sideNav__collapse {
+  font-size: 1rem;
+  position: absolute;
+  padding: .75rem .75rem;
+  background-color: rgb(203, 203, 203);
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 15%;
+  /* height: inherit; */
+}
+.sideNav__collapse--open {
+  top: 0rem;
+  right: 0rem;
+}
+.sideNav__collapse--close {
+  right: 0rem;
+  top: 0rem;
+}
+.sideNav__collapse:hover{
+  background-color: grey;
+  cursor: pointer;
 }
 .sideNav__list {
   position: relative;
   list-style-type: none;
+  width: 90%;
+  /* padding-right: 5%; */
 }
 .sideNav__list-link {
   display: flex;
