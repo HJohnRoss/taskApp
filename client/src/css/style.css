@@ -80,7 +80,6 @@
   border-bottom: 1px solid #FF2E63;
   color: #FF2E63;
 }
-
 .sideNav {
   width: 15rem;
   position: relative;
@@ -115,6 +114,8 @@
 .sideNav__collapse:hover{
   background-color: grey;
   cursor: pointer;
+  transition: 0.4s ease;
+  color: white;
 }
 .sideNav__list {
   position: relative;
