@@ -5,6 +5,7 @@ const SideNav = () => {
 
   const [navCollapse, setNavCollapse] = useState(true)
   // const [navWidth, setNavWidth] = useState(15)
+  const [isOpen, setIsOpen] = useState(false);
 
   const collapseNav = () => {
     setNavCollapse(prev => !prev)
