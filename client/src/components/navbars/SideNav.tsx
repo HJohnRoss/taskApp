@@ -26,6 +26,20 @@ const SideNav = () => {
       d="M8.25 4.5l7.5 7.5-7.5 7.5"
     />
   </svg> */}
+
+  const boards= [
+    {
+      title: "board 1"
+    },
+
+    {
+      title: "board 2"
+    },
+
+    {
+      title: "board 3"
+    }
+  ]
   return (
     <>
       <nav className="sideNav" style={{ width: `${navCollapse ? "15" : "1"}rem` }}>
@@ -47,9 +61,7 @@ const SideNav = () => {
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
               <ul className="sideNav__dropdown">
-                <li><Link className="sideNav__list-link" to={"/"}>Board 1</Link></li>
-                <li><Link className="sideNav__list-link" to={"/"}>Board 2</Link></li>
-                <li><Link className="sideNav__list-link" to={"/"}>Board 3</Link></li>
+                {boards.map(b => (<li><Link className="sideNav__list-link" to={"/"}>{b.title}</Link></li>))}
               </ul>
             </li>
             <li className="sideNav__list-item">
