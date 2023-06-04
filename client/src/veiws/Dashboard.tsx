@@ -6,8 +6,10 @@ const Dashboard = () => {
   return (
     <>
       <TopNav />
-      <SideNav/>
-      <CalendarBoard/>
+      <main className="dashboard-content-wrapper">
+        <SideNav />
+        <CalendarBoard />
+      </main>
     </>
   );
 };

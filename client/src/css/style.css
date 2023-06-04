@@ -38,6 +38,18 @@
   }
 }
 
+.dashboard-content-wrapper {
+  margin: 2rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-board {
+  width: 100%;
+  margin-right: 1rem;
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
 .topNav {
   display: flex;
   justify-content: space-between;
@@ -84,11 +96,11 @@
 .sideNav {
   width: 15rem;
   position: relative;
-  margin-top: 2rem;
+  margin-right: 1rem;
   height: 75vh;
-  background-color: rgba(37, 42, 52, 0.1);
+  background-color: rgba(234, 234, 234, 0.1);
   border-radius: 0 1rem 1rem 0;
-  box-shadow: 0.5rem 0.7rem 1rem rgba(37, 42, 52, 0.1);
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   z-index: 99;
   padding: 0 1rem;
   transition: width 0.2s ease;
@@ -116,14 +128,37 @@
   margin-top: 2rem;
   padding: 2rem 0;
 }
+.sideNav__list-search {
+  border-radius: 0.5rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+  border: 1px solid #D3D3D3;
+  padding: 0.25rem 0;
+  margin-bottom: 2px;
+}
+.sideNav__list-search--icon:visited {
+  all: unset;
+}
+.sideNav__list-search:hover {
+  border: 1px solid #696969;
+}
+.sideNav__list-search--input {
+  all: unset;
+  border: none;
+  max-width: 80%;
+}
 .sideNav__list-link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 1rem;
   text-decoration: none;
   text-transform: capitalize;
   color: #252A34;
+  padding: 0 0.4rem;
   height: 3rem;
   transition: 0.5s ease;
   border-radius: 0 1rem;

@@ -27,7 +27,7 @@ const SideNav = () => {
     />
   </svg> */}
 
-  const boards= [
+  const boards = [
     {
       title: "board 1"
     },
@@ -40,6 +40,11 @@ const SideNav = () => {
       title: "board 3"
     }
   ]
+
+  const navProps = [
+
+  ]
+
   return (
     <>
       <nav className="sideNav" style={{ width: `${navCollapse ? "15" : "1"}rem` }}>
@@ -52,16 +57,22 @@ const SideNav = () => {
         {navCollapse &&
           <ul className="sideNav__list">
             <li className="sideNav__list-item">
-              <Link className="sideNav__list-link" to={"/"}>search</Link>
+              <Link className="sideNav__list-search" to={"/"}>
+                <i className="fa-solid fa-magnifying-glass sideNav__list-search--icon"></i>
+                <input className="sideNav__list-search--input"/>
+              </Link>
             </li>
             <li className="sideNav__list-item">
-              <Link className="sideNav__list-link" to={"/"}>Create Board</Link>
+              <Link className="sideNav__list-link" to={"/"}>
+                <span>Create Board</span>
+                <i className="fa-regular fa-clipboard"></i>
+              </Link>
             </li>
 
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
               <ul className="sideNav__dropdown">
-                {boards.map(b => (<li><Link className="sideNav__list-link" to={"/"}>{b.title}</Link></li>))}
+                {boards.map(board => (<li><Link className="sideNav__list-link" to={"/"}>{board.title}</Link></li>))}
               </ul>
             </li>
             <li className="sideNav__list-item">
