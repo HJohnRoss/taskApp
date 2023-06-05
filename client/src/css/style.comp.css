@@ -91,7 +91,7 @@
   width: 15rem;
   position: relative;
   margin-right: 1rem;
-  height: vh;
+  height: 75vh;
   background-color: rgba(234, 234, 234, 0.1);
   border-radius: 0 1rem 1rem 0;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -187,67 +187,11 @@
   list-style: none;
 }
 
-.board {
-  max-width: 100%;
-  text-align: center;
-}
-.board .calendar-board-table__row--head {
-  text-transform: capitalize;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 14.2857142857%;
-}
-.board .calendar-board-table__row--data {
-  border: 1px solid #ccc;
-  text-align: center;
-  width: 14.2857142857%;
-}
-.board .calendar-board-table__row--data span {
-  display: inline-block;
-  border-radius: 50%;
-  padding: 0.25rem 0.5rem;
-  background-color: white;
-}
-.board .calendar-board-table__row--data span:hover {
-  background-color: #ccc;
-  cursor: pointer;
-}
-.board .task-container__item > div {
-  font-weight: 100;
-  margin: 0 auto;
-  color: white;
-  letter-spacing: 1px;
-  max-width: 5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  line-height: 10px;
-  padding: 0.25rem 0.5rem;
-  margin-bottom: 2px;
-  border-radius: 3px;
-  background-color: rgb(66, 133, 244);
-}
-
-.board {
+.calendar-board {
   width: 100%;
   margin-right: 1rem;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  padding: 2rem;
 }
 
-.task-board-table {
-  font-size: 1rem;
-  margin-left: auto;
-  margin-right: 2rem;
-  width: 85%;
-}
-.task-board-table__row--data, .task-board-table__row--header {
-  font-weight: 100;
-  padding: 0.65rem 0;
-  margin: 0 auto;
-  border: 1px solid #D3D3D3;
-  text-align: center;
-}
-
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.comp.css.map */

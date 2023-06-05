@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "tasks")
 
-public class Task {
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,10 +41,10 @@ public class Task {
     private Date updatedAt;
 
 
-    public Task() {
+    public Board() {
     }
 
-    public Task(Long id, String taskName, String date, String description, Date createdAt, Date updatedAt) {
+    public Board(Long id, String taskName, String date, String description, Date createdAt, Date updatedAt) {
         this.id = id;
         this.taskName = taskName;
         this.date = date;

@@ -62,12 +62,14 @@ const SideNav = () => {
                 <input className="sideNav__list-search--input"/>
               </Link>
             </li>
-            <li className="sideNav__list-item">
+
+            {/* <li className="sideNav__list-item">
               <Link className="sideNav__list-link" to={"/"}>
                 <span>Create Board</span>
                 <i className="fa-regular fa-clipboard"></i>
               </Link>
-            </li>
+            </li> */}
+            
 
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
@@ -75,12 +77,14 @@ const SideNav = () => {
                 {boards.map(board => (<li><Link className="sideNav__list-link" to={"/"}>{board.title}</Link></li>))}
               </ul>
             </li>
+
             <li className="sideNav__list-item">
               <Link className="sideNav__list-link" to={"/"}>Favorite Boards</Link>
             </li>
-            <li className="sideNav__list-item">
+
+            {/* <li className="sideNav__list-item">
               <Link className="sideNav__list-link" to={"/"}>All Boards</Link>
-            </li>
+            </li> */}
           </ul>}
       </nav>
     </>
