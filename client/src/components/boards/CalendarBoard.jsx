@@ -26,20 +26,18 @@ const board = {
 
 function TaskContainer({ data, tasks }) {
     return (
-        <div className='calendar-board-table__row--data--container'>
-            <span>
+        <div className='calendar-board__table--row--data--container'>
+            <div className='calendar-board__table--row--data--container--date'>
                 7
-            </span>
+            </div>
             <div className='task-container'>
-                <div className='task-container__item'>
-                    {tasks.map(task =>
-                    (
-                        <div>
-                            {task}
-                        </div>
-                    )
-                    )}
-                </div>
+                {tasks.map(task =>
+                (
+                    <div>
+                        {task}
+                    </div>
+                )
+                )}
             </div>
         </div>
     )
@@ -48,45 +46,45 @@ function TaskContainer({ data, tasks }) {
 
 function Week() {
     return (
-        <tr className='calendar-board-table__row'>
-            <th className='calendar-board-table__row--data' >
-                <TaskContainer date={"1"} tasks={["yesssssssssss", "yesssssssssssssssss22wswwwwwwwwwwwww", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data' >
+        <tr className='calendar-board__table--row'>
+            <td className='calendar-board__table--row--data' >
+                <TaskContainer date={"1"} tasks={["yes", "yessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", "", "no"]} />
+            </td>
+            <td className='calendar-board__table--row--data' >
                 <TaskContainer date={"2"} tasks={["yes", "yes", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data' >
+            </td>
+            <td className='calendar-board__table--row--data' >
                 <TaskContainer date={"3"} tasks={["yes", "yes", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data' >
+            </td>
+            <td className='calendar-board__table--row--data' >
                 <TaskContainer date={"4"} tasks={["yes", "yes", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data'>
+            </td>
+            <td className='calendar-board__table--row--data'>
                 <TaskContainer date={"5"} tasks={["yes", "yes", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data'>
+            </td>
+            <td className='calendar-board__table--row--data'>
                 <TaskContainer date={"6"} tasks={["yes", "yes", "", "no"]} />
-            </th>
-            <th className='calendar-board-table__row--data' >
-                <TaskContainer date={"7"} tasks={["yes", "yes", "99", "no"]} />
-            </th>
+            </td>
+            <td className='calendar-board__table--row--data' >
+                <TaskContainer date={"7"} tasks={["yes", "yes", "", "no"]} />
+            </td>
         </tr>
     )
 }
 
 function CalendarBoard() {
     return (
-        <div className='board'>
+        <div className='calendar-board'>
             <h1>Calendar Board</h1>
-            <table className='table calendar-board-table'>
-                <tr className='calendar-board-table__row'>
-                    <th className='calendar-board-table__row--head' >Sun</th>
-                    <th className='calendar-board-table__row--head' >Mon</th>
-                    <th className='calendar-board-table__row--head' >Tue</th>
-                    <th className='calendar-board-table__row--head' >wed</th>
-                    <th className='calendar-board-table__row--head' >Thu</th>
-                    <th className='calendar-board-table__row--head' >Fri</th>
-                    <th className='calendar-board-table__row--head' >Sat</th>
+            <table className='calendar-board__table'>
+                <tr className='calendar-board__table--row'>
+                    <th className='calendar-board__table--row--head' >Sun</th>
+                    <th className='calendar-board__table--row--head' >Mon</th>
+                    <th className='calendar-board__table--row--head' >Tue</th>
+                    <th className='calendar-board__table--row--head' >wed</th>
+                    <th className='calendar-board__table--row--head' >Thu</th>
+                    <th className='calendar-board__table--row--head' >Fri</th>
+                    <th className='calendar-board__table--row--head' >Sat</th>
                 </tr>
                 <Week></Week>
                 <Week></Week>

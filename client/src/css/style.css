@@ -187,45 +187,64 @@
   list-style: none;
 }
 
-.board {
-  max-width: 100%;
-  text-align: center;
+.calendar-board {
+  height: 100%;
 }
-.board .calendar-board-table__row--head {
+.calendar-board__table {
+  height: 80%;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.calendar-board__table--row {
+  width: 100%;
+}
+.calendar-board__table--row--head {
   text-transform: capitalize;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 14.2857142857%;
+  font-size: 1rem;
 }
-.board .calendar-board-table__row--data {
+.calendar-board__table--row--data {
   border: 1px solid #ccc;
   text-align: center;
-  width: 14.2857142857%;
 }
-.board .calendar-board-table__row--data span {
-  display: inline-block;
+.calendar-board__table--row--data--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+.calendar-board__table--row--data--container--date {
+  max-height: 50%;
   border-radius: 50%;
-  padding: 0.25rem 0.5rem;
-  background-color: white;
+  width: fit-content;
+  padding: 5px 10px;
+  margin: 0 auto;
 }
-.board .calendar-board-table__row--data span:hover {
-  background-color: #ccc;
-  cursor: pointer;
+.calendar-board__table--row--data--container--date:hover {
+  background-color: #696969;
+  color: #EAEAEA;
 }
-.board .task-container__item > div {
+
+.task-container {
+  min-height: 50%;
+  margin: 0 auto;
+  width: 90%;
+}
+.task-container > div {
   font-weight: 100;
   margin: 0 auto;
   color: white;
   letter-spacing: 1px;
-  max-width: 5rem;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 10px;
-  padding: 0.25rem 0.5rem;
+  height: 20%;
   margin-bottom: 2px;
   border-radius: 3px;
   background-color: rgb(66, 133, 244);
+  width: 7vw;
+  padding: 0 0.5rem;
 }
 
 .board {
@@ -234,17 +253,20 @@
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   padding: 2rem;
+  text-align: left;
+  height: 85vh;
 }
 
-.task-board-table {
-  font-size: 1rem;
-  margin-left: auto;
-  margin-right: 2rem;
-  width: 85%;
+.task-board {
+  height: 100%;
 }
-.task-board-table__row--data, .task-board-table__row--header {
+.task-board__table {
+  height: 25%;
+  font-size: 1rem;
+  width: 75%;
+}
+.task-board__table--row--data, .task-board__table--row--header {
   font-weight: 100;
-  padding: 0.65rem 0;
   margin: 0 auto;
   border: 1px solid #D3D3D3;
   text-align: center;

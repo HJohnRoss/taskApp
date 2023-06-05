@@ -91,7 +91,7 @@
   width: 15rem;
   position: relative;
   margin-right: 1rem;
-  height: 75vh;
+  height: vh;
   background-color: rgba(234, 234, 234, 0.1);
   border-radius: 0 1rem 1rem 0;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -187,11 +187,72 @@
   list-style: none;
 }
 
-.calendar-board {
+.board {
+  max-width: 100%;
+  text-align: center;
+  height: 85vh;
+}
+.board .calendar-board-table {
+  height: 80%;
+}
+.board .calendar-board-table__row--head {
+  text-transform: capitalize;
+  border: 1px solid #ccc;
+  padding: 1%;
+}
+.board .calendar-board-table__row--data {
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 14.2857142857%;
+}
+.board .calendar-board-table__row--data--container > span {
+  height: 50%;
+  border-radius: 50%;
+  padding: 2% 2%;
+  background-color: white;
+}
+.board .calendar-board-table__row--data--container:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+.board .task-container__item {
+  height: 50%;
+}
+.board .task-container__item > div {
+  font-weight: 100;
+  margin: 0 auto;
+  color: white;
+  letter-spacing: 1px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 20%;
+  margin-bottom: 2px;
+  border-radius: 3px;
+  background-color: rgb(66, 133, 244);
+}
+
+.board {
   width: 100%;
   margin-right: 1rem;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
+  padding: 2rem;
+}
+
+.task-board-table {
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: 85%;
+}
+.task-board-table__row--data, .task-board-table__row--header {
+  font-weight: 100;
+  padding: 0.65rem 0;
+  margin: 0 auto;
+  border: 1px solid #D3D3D3;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.comp.css.map */

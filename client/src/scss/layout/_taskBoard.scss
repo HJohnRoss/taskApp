@@ -1,17 +1,20 @@
-.task-board-table {
-    font-size: 1rem;
-    margin-left: auto;
-    margin-right: 2rem;
-    width: 85%;
-    
-    &__row {
-        
-        &--data, &--header{
-            font-weight: 100;
-            padding: .65rem 0;
-            margin: 0 auto;
-            border: 1px solid $color-grey-light;
-            text-align: center;
+.task-board {
+    height: 100%;
+    &__table {
+        height: 25%;
+        font-size: 1rem;
+        width: 75%;
+
+        &--row {
+
+            &--data,
+            &--header {
+                font-weight: 100;
+                margin: 0 auto;
+                border: 1px solid $color-grey-light;
+                text-align: center;
+            }
         }
     }
+
 }

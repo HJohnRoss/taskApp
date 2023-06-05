@@ -40,38 +40,46 @@ function Task({ title, description, status, date }) {
         console.log(bStyle)
     } else if (status.toLowerCase() == "working on") {
         bStyle = "#FFD700"
-    }else {
+    } else {
         bStyle = "#FF3333"
     }
 
     return (
-        <tr className='task-board-table__row'>
-            <td className='task-board-table__row--data'>
+        <tr className='task-board__table--row'>
+            <td className='task-board__table--row--data'>
                 <input className='btn' type="checkbox" />
             </td>
-            <td className='task-board-table__row--data'>
+            <td className='task-board__table--row--data'>
                 {title}
             </td>
-            <td className='task-board-table__row--data' style={{ backgroundColor: bStyle, color: "white" }}>
+            <td className='task-board__table--row--data' style={{ backgroundColor: bStyle, color: "white" }}>
                 {status}
             </td>
-            <td className='task-board-table__row--data'>
+            <td className='task-board__table--row--data'>
                 {date}
             </td>
         </tr >
     )
 }
 
-function TableBoard() {
+function TaskBoard() {
     return (
-        <div className='board'>
-            <h1>{board.title}</h1>
-            <table className='table task-board-table'>
-                <tr className='task-board-table__row'>
-                    <th className='task-board-table__row--header'><input className='btn' type="checkbox" /></th>
-                    <th className='task-board-table__row--header'>Task Name</th>
-                    <th className='task-board-table__row--header'>Status</th>
-                    <th className='task-board-table__row--header'>Date</th>
+        <div className='task-board'>
+            <TaskBoardTable />
+        </div>
+    )
+}
+
+function TaskBoardTable() {
+    return (
+        <>
+            <h1 className='task-board__title'>{board.title}</h1>
+            <table className='table task-board__table'>
+                <tr className='task-board__table--row'>
+                    <th className='task-board__table--row--header'><input className='btn' type="checkbox" /></th>
+                    <th className='task-board__table--row--header'>Task Name</th>
+                    <th className='task-board__table--row--header'>Status</th>
+                    <th className='task-board__table--row--header'>Date</th>
                 </tr>
                 {board.tasks.map(task => (
                     <Task
@@ -81,8 +89,8 @@ function TableBoard() {
                     />
                 ))}
             </table>
-        </div>
+        </>
     )
 }
 
-export default TableBoard;
+export default TaskBoard;
