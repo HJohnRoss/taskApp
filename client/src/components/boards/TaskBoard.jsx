@@ -72,7 +72,7 @@ function TaskBoard() {
 
 function TaskBoardTable() {
     return (
-        <>
+        <div>
             <h1 className='task-board__title'>{board.title}</h1>
             <table className='table task-board__table'>
                 <tr className='task-board__table--row'>
@@ -89,7 +89,7 @@ function TaskBoardTable() {
                     />
                 ))}
             </table>
-        </>
+        </div>
     )
 }
 

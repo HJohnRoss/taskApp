@@ -5,7 +5,7 @@ import CalendarBoard from './CalendarBoard'
 function BoardHolder() {
     return (
         <div className='board'>
-            <TaskBoard/>
+            <CalendarBoard/>
         </div>
     )
 }

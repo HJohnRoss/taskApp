@@ -91,7 +91,6 @@
   width: 15rem;
   position: relative;
   margin-right: 1rem;
-  height: vh;
   background-color: rgba(234, 234, 234, 0.1);
   border-radius: 0 1rem 1rem 0;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -206,6 +205,7 @@
 .calendar-board__table--row--data {
   border: 1px solid #ccc;
   text-align: center;
+  width: 14.2857142857%;
 }
 .calendar-board__table--row--data--container {
   display: flex;
@@ -229,6 +229,7 @@
   min-height: 50%;
   margin: 0 auto;
   width: 90%;
+  cursor: pointer;
 }
 .task-container > div {
   font-weight: 100;
@@ -249,23 +250,31 @@
 
 .board {
   width: 100%;
-  margin-right: 1rem;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  padding: 2rem;
   text-align: left;
   height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem;
 }
 
 .task-board {
-  height: 100%;
+  width: 100%;
 }
 .task-board__table {
-  height: 25%;
+  height: 100%;
   font-size: 1rem;
   width: 75%;
 }
+.task-board__table--row {
+  width: 100%;
+}
 .task-board__table--row--data, .task-board__table--row--header {
+  max-width: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 100;
   margin: 0 auto;
   border: 1px solid #D3D3D3;

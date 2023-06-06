@@ -47,7 +47,7 @@ const SideNav = () => {
 
   return (
     <>
-      <nav className="sideNav" style={{ width: `${navCollapse ? "15" : "1"}rem` }}>
+      <nav className="sideNav" style={{ width: `${navCollapse ? "20" : "1"}rem` }}>
         {navCollapse ?
           <i className="fa-solid fa-angle-left sideNav__collapse sideNav__collapse--close" onClick={collapseNav}></i>
           :
@@ -59,7 +59,7 @@ const SideNav = () => {
             <li className="sideNav__list-item">
               <Link className="sideNav__list-search" to={"/"}>
                 <i className="fa-solid fa-magnifying-glass sideNav__list-search--icon"></i>
-                <input className="sideNav__list-search--input"/>
+                <input className="sideNav__list-search--input" placeholder="Search Boards"/>
               </Link>
             </li>
 
