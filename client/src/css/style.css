@@ -20,11 +20,6 @@
     font-size: 50%;
   }
 }
-@media (min-width: 112.5em) {
-  #root {
-    font-size: 75%;
-  }
-}
 
 #root {
   font-family: "Roboto", sans-serif;
