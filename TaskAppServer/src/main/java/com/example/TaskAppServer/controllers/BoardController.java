@@ -20,21 +20,21 @@ public class BoardController {
     BoardService boardService;
 
     // Get one board 
-    @GetMapping("/boards/{id}")
+    @GetMapping("/api/boards/{id}")
     public Board getOneBoard(Long id) {
         Board board = boardService.getOneBoard(id);
         return board;
     }
 
     // Get all boards
-    @GetMapping("/boards/all")
+    @GetMapping("/api/boards/all")
     public List<Board> getAllBoards() {
         List<Board> boards = boardService.getAllBoards();
         return boards;
     }
 
     // Get recent boards
-    @GetMapping("/boards/recent")
+    @GetMapping("/api/boards/recent")
     public List<Board> getRecentBoards() {
         List<Board> boards = boardService.getAllBoards();
         return boards;

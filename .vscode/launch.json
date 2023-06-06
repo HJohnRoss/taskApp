@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-TaskAppServerApplication<TaskAppServer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.example.TaskAppServer.TaskAppServerApplication",
+      "projectName": "TaskAppServer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

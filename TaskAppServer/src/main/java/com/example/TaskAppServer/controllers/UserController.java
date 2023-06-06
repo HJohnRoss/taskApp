@@ -26,13 +26,13 @@ public class UserController {
     UserService userService;
 
     // Creates a new User
-    @PostMapping("/register")
+    @PostMapping("/api/register")
     public void register(@RequestBody User user, BindingResult result, HttpSession session) {
         Optional<User> newUser = userService.register(user, result);
     }
 
     // Login
-    @GetMapping("/login")
+    @GetMapping("/api/login")
     public String login(@RequestBody User user, BindingResult result, HttpSession session) {
 
         Optional<User> user1 = userService.findUserById(user.getId(), result);

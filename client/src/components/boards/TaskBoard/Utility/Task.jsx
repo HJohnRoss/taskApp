@@ -4,7 +4,6 @@ function Task({ title, description, status, date }) {
 
     if (status.toLowerCase() == "done") {
         bStyle = "#00CC00"
-        console.log(bStyle)
     } else if (status.toLowerCase() == "working on") {
         bStyle = "#FFD700"
     } else {

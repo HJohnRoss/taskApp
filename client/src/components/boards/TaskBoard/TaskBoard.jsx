@@ -5,6 +5,7 @@ function TaskBoard() {
     return (
         <div className='task-board'>
             <TaskBoardTable />
+            <TaskBoardTable />
         </div>
     )
 }
