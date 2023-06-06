@@ -16,12 +16,16 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserById(Long id) {
-        User user = userRepository.findById(id).orElse(null);
+    public Optional<User> findUserById(Long id, BindingResult result) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            result.rejectValue("email", "Email", "Email already registered");
+        }
+
         return user;
     }
 
-    public User register(User newUser, BindingResult result) {
+    public Optional<User> register(User newUser, BindingResult result) {
         Optional<User> user = userRepository.findByEmail(newUser.getEmail());
         if (user.isPresent()) {
             result.rejectValue("email", "Email", "Email already registered");
@@ -30,7 +34,7 @@ public class UserService {
             return null;
         }
         
-        return null;
+        return user;
     }
 
     public List<User> getAllUsers() {

@@ -1,0 +1,92 @@
+.calendar-board {
+
+    height: 100%;
+
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    &__table {
+        height: 80%;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+
+        &>* {
+
+            // height: 8vh;
+        }
+
+
+        &--row {
+            // font-weight: bold;
+            // height: 400px;
+            width: 100%;
+
+            &--head {
+                text-transform: capitalize;
+                font-size: 1rem;
+            }
+
+            &--data {
+                border: 1px solid #ccc;
+                text-align: center;
+                width: calc(100%/7);
+
+                &--container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    height: 100%;
+
+                    &--date {
+                        font-size: .8rem;
+                        max-height: 50%;
+                        border-radius: 50%;
+                        width: fit-content;
+                        padding: 5px 10px;
+                        margin: 0 auto;
+                        transition: all .4s;
+
+                        &:hover {
+                            background-color: $color-grey-dark;
+                            color: $color-white;
+                            transform: translateY(-3px);
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.task-container {
+    min-height: 50%;
+    margin: 0 auto;
+    width: 90%;
+    cursor: pointer;
+
+    &>div {
+        font-weight: 100;
+        margin: 0 auto;
+        color: white;
+        letter-spacing: 1px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 20%;
+        margin-bottom: 2px;
+        border-radius: 3px;
+        background-color: $color-primary;
+        width: 7vw;
+        padding: 0 .5rem;
+    }
+
+}

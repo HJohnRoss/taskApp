@@ -1,0 +1,13 @@
+.board {
+    width: 100%;
+    margin-right: 2%;
+    box-shadow:  0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    text-align: left;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem;
+}
+
