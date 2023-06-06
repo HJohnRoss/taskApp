@@ -1,6 +1,6 @@
 import React from 'react'
-import TaskBoard from './TaskBoard'
-import CalendarBoard from './CalendarBoard'
+import TaskBoard from './TaskBoard/TaskBoard';
+import CalendarBoard from './CalendarBoard/CalendarBoard'
 
 function BoardHolder() {
     return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import Task from "../Utility/Task";
 
 const board = {
     title: "First Board",
@@ -31,45 +31,6 @@ const board = {
 
 }
 
-function Task({ title, description, status, date }) {
-
-    let bStyle = ""
-
-    if (status.toLowerCase() == "done") {
-        bStyle = "#00CC00"
-        console.log(bStyle)
-    } else if (status.toLowerCase() == "working on") {
-        bStyle = "#FFD700"
-    } else {
-        bStyle = "#FF3333"
-    }
-
-    return (
-        <tr className='task-board__table--row'>
-            <td className='task-board__table--row--data'>
-                <input className='btn' type="checkbox" />
-            </td>
-            <td className='task-board__table--row--data'>
-                {title}
-            </td>
-            <td className='task-board__table--row--data' style={{ backgroundColor: bStyle, color: "white" }}>
-                {status}
-            </td>
-            <td className='task-board__table--row--data'>
-                {date}
-            </td>
-        </tr >
-    )
-}
-
-function TaskBoard() {
-    return (
-        <div className='task-board'>
-            <TaskBoardTable />
-        </div>
-    )
-}
-
 function TaskBoardTable() {
     return (
         <div>
@@ -93,4 +54,4 @@ function TaskBoardTable() {
     )
 }
 
-export default TaskBoard;
+export default TaskBoardTable;

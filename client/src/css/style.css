@@ -189,6 +189,12 @@
 .calendar-board {
   height: 100%;
 }
+.calendar-board__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .calendar-board__table {
   height: 80%;
   text-align: center;
@@ -214,15 +220,19 @@
   height: 100%;
 }
 .calendar-board__table--row--data--container--date {
+  font-size: 0.8rem;
   max-height: 50%;
   border-radius: 50%;
   width: fit-content;
   padding: 5px 10px;
   margin: 0 auto;
+  transition: all 0.4s;
 }
 .calendar-board__table--row--data--container--date:hover {
   background-color: #696969;
   color: #EAEAEA;
+  transform: translateY(-3px);
+  cursor: pointer;
 }
 
 .task-container {
@@ -250,6 +260,7 @@
 
 .board {
   width: 100%;
+  margin-right: 2%;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   text-align: left;

@@ -74,7 +74,7 @@ const SideNav = () => {
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
               <ul className="sideNav__dropdown">
-                {boards.map(board => (<li><Link className="sideNav__list-link" to={"/"}>{board.title}</Link></li>))}
+                {boards.map((board, i) => (<li key={i}><Link className="sideNav__list-link" to={"/"}>{board.title}</Link></li>))}
               </ul>
             </li>
 

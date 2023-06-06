@@ -18,7 +18,7 @@ const TopNav = () => {
         <li>
           <img className="topNav__list-logo" src={"/"} alt="Logo" />
         </li>
-        {navProps.map(item => (<li><Link className="topNav__list-link" to={"/"}>{item.title}</Link></li>))}
+        {navProps.map((item, i) => (<li key={i} ><Link className="topNav__list-link" to={"/"}>{item.title}</Link></li>))}
       </ul>
       <div>
         <Link to={"/"} className="topNav__profile">
