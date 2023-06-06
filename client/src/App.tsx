@@ -1,4 +1,4 @@
-import Dashboard from "./veiws/Dashboard";
+import Dashboard from "./views/Dashboard";
 import { Routes, Route } from "react-router";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/boards/:id" element={<Dashboard />} />
       </Routes>
     </>
   );
