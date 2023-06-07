@@ -1,5 +1,6 @@
 package com.example.TaskAppServer.services;
 
+import java.io.Console;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class BoardService {
 
     public Board getOneBoard(Long id) {
         Board board = boardRepository.findById(id).orElse(null);
+        System.out.println(board.getBoardName() + "superman");
+        System.out.println("superman");
         return board;
     }
 

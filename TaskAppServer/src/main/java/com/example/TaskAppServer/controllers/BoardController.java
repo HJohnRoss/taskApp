@@ -17,13 +17,13 @@ public class BoardController {
     
     @Autowired
     UserService userService;
+    @Autowired
     BoardService boardService;
 
     // Get one board 
     @GetMapping("/api/boards/{id}")
     public Board getOneBoard(Long id) {
-        Board board = boardService.getOneBoard(id);
-        return board;
+        return  boardService.getOneBoard(id);
     }
 
     // Get all boards

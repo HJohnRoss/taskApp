@@ -45,10 +45,10 @@ public class UserController {
     }
 
     // Get all Users
-    // @GetMapping("/users/all")
-    // public List<User> getAllUsers(){
-    // List<User> users = userService.getAllUsers();
-    // return users;
-    // }
+    @GetMapping("api/users/all")
+    public List<User> getAllUsers(){
+    List<User> users = userService.getAllUsers();
+    return users;
+    }
 
 }
