@@ -1,6 +1,5 @@
-import React from 'react'
-import TaskBoard from './TaskBoard/TaskBoard';
 import CalendarBoard from './CalendarBoard/CalendarBoard'
+import TaskBoard from './TaskBoard/TaskBoard'
 
 function BoardHolder() {
 
@@ -8,7 +7,8 @@ function BoardHolder() {
 
     return (
         <div className='board'>
-          <CalendarBoard/>
+          {/* <CalendarBoard/> */}
+          <TaskBoard/>
         </div>
     )
 }
