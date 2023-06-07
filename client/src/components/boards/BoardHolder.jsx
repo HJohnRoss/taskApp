@@ -1,22 +1,20 @@
-import React from 'react'
-import TaskBoard from './TaskBoard/TaskBoard';
 import CalendarBoard from './CalendarBoard/CalendarBoard'
-import { useParams } from 'react-router-dom';
-import BoardService from '../services/BoardService';
+import TaskBoard from './TaskBoard/TaskBoard'
 
 function BoardHolder() {
 
-    const { id } = useParams();
+  // const { id } = useParams();
 
-    let service = BoardService.getOne(id)
-    console.log(service)
+  // let service = BoardService.getOne(id)
+  // console.log(service)
 
-    return (
-        <div className='board'>
-            <CalendarBoard />
-            { }
-        </div>
-    )
+  return (
+    <div className='board'>
+      <CalendarBoard />
+      {/* <CalendarBoard/> */}
+      <TaskBoard />
+    </div>
+  )
 }
 
 export default BoardHolder;
