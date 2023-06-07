@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 class BoardService {
 
-  
+
   getAll() {
     return axiosInstance.get("/boards/all")
   }
@@ -23,7 +23,7 @@ class BoardService {
   getRecent() {
     return axiosInstance.get("/boards/recent")
   }
-  
+
   // NOT MADE YET:
   // createRegister(data) {
   //   return axiosInstance.post(`/register`, data)

@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "board")
+@Table(name = "boards")
 
 public class Board {
     @Id
@@ -37,6 +37,9 @@ public class Board {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
+    @OneToMany(mappedBy = "board",fetch = FetchType.LAZY)
+    private List<Task> tasks;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -48,12 +51,13 @@ public class Board {
     }
 
     public Board(Long id, String boardName, String date, String description, Date createdAt, Date updatedAt,
-            User user) {
+            User user, List<Task> tasks) {
         this.id = id;
         this.boardName = boardName;
         this.user = user;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.tasks = tasks;
     }
 
     @PrePersist

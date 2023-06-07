@@ -4,15 +4,18 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "task")
+@Table(name = "tasks")
 public class Task {
     
     @Id
@@ -31,13 +34,19 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    public Task(Long id, String title, String date, String description, Date createdAt, Date updatedAt) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
+
+    public Task(Long id, String title, String date, String description, Date createdAt, 
+    Date updatedAt, Board board) {
         this.id = id;
         this.title = title;
         this.date = date;
         this.description = description;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.board = board;
     }
 
 
