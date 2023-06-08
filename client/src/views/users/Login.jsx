@@ -2,7 +2,7 @@ import TopNav from "../../components/navbars/TopNav"
 
 const Login = () => {
   return (
-    <>
+    <div className="center">
 
       <section className="login">
         <TopNav />
@@ -32,7 +32,7 @@ const Login = () => {
           </form>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 
