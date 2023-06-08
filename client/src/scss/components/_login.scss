@@ -1,0 +1,31 @@
+.login {
+  background: $color-grey-dark;
+  min-height: 100vh;
+
+  &__container {
+    position: absolute;
+    left: 45%;
+    top: 35%;
+
+
+    &--form {
+      background-color: $color-primary;
+      border: 2px solid $color-secondary-dark;
+      border-radius: 1rem;
+      padding: 2rem;
+
+      &--header {
+        color: $color-dark;
+      }
+
+      &--label {
+        color: $color-dark;
+        display: block;
+      }
+
+      &--input {
+        display: block;
+      }
+    }
+  }
+}

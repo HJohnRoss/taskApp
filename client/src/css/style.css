@@ -89,6 +89,32 @@
   justify-content: space-between;
 }
 
+.login {
+  background: #696969;
+  min-height: 100vh;
+}
+.login__container {
+  position: absolute;
+  left: 45%;
+  top: 35%;
+}
+.login__container--form {
+  background-color: rgb(66, 133, 244);
+  border: 2px solid #c91743;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.login__container--form--header {
+  color: #252A34;
+}
+.login__container--form--label {
+  color: #252A34;
+  display: block;
+}
+.login__container--form--input {
+  display: block;
+}
+
 .topNav {
   display: flex;
   justify-content: space-between;

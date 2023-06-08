@@ -5,19 +5,19 @@ import { Link } from "react-router-dom";
 const navProps = [
   {
     title: "Home",
-    to: "",
+    link: "",
   },
   {
     title: "About",
-    to: "",
+    link: "",
   },
   {
     title: "Login",
-    to: ""
+    link: "login"
   },
   {
     title: "Register",
-    to: ""
+    link: ""
   }
 ]
 
@@ -52,7 +52,7 @@ const TopNav = () => {
           <li>
             {/* <img className="topNav__left--list-logo" src={"/"} alt="Logo" /> */}
           </li>
-          {navProps.map((item, i) => (<li key={i} ><Link className="topNav__left--list-link" to={"/"}>{item.title}</Link></li>))}
+          {navProps.map((item, i) => (<li key={i} ><Link className="topNav__left--list-link" to={`/${item.link}`}>{item.title}</Link></li>))}
 
         </ul>
       </div>
