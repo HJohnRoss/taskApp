@@ -172,9 +172,10 @@
 .topNav__right--list-search--icon {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  transition: all 0.5s;
 }
 .topNav__right--list-search--icon:hover {
-  color: black;
+  color: #000;
 }
 .topNav__profile {
   padding: 0;

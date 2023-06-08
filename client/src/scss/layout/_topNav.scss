@@ -90,8 +90,9 @@
         &--icon {
           margin-left: .5rem;
           margin-right: .5rem;
+          transition: all .5s;
           &:hover {
-            color: black;
+            color: #000;
           }
         }
       }
