@@ -19,7 +19,8 @@
             // font-weight: bold;
             // height: 400px;
             width: 100%;
-            &:not(:first-child){
+
+            &:not(:first-child) {
 
                 height: calc(100%/4);
             }
@@ -27,14 +28,14 @@
 
             &--head {
                 text-transform: capitalize;
-                font-size: $font-size-secondary;
+                font-size: $font-size-small;
             }
 
             &--data {
                 border: 1px solid #ccc;
                 text-align: center;
                 width: calc(100%/7);
-                
+
                 &--container {
                     position: relative;
                     display: flex;
@@ -44,10 +45,10 @@
 
                     &--forms {
                         position: absolute;
-                        font-size: 1rem;
-                        width: 30vw;
+                        font-size: $font-size-small;
+                        max-width: 50vw;
                         top: -4rem;
-                        right:-2rem;
+                        right: -2rem;
                         background-color: white;
                         border-radius: 1rem;
                         border: 2px solid white;
@@ -55,20 +56,22 @@
                         animation: moveInLeft .2s ease-out .2s;
                         animation-fill-mode: backwards;
                         box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
-                        & > div {
+
+                        &>div {
                             text-align: right;
                             background-color: rgba(223, 223, 223, 0.198);
                         }
                     }
 
                     &--date {
-                        font-size: $font-size-primary;
+                        font-size: $font-size-small;
                         max-height: 50%;
                         border-radius: 50%;
                         width: fit-content;
                         padding: 5px 10px;
                         margin: 0 auto;
                         transition: all .4s;
+
                         &:hover {
                             background-color: $color-grey-dark;
                             color: $color-white;
@@ -89,26 +92,43 @@
     margin: 0 auto;
     width: 100%;
     // cursor: pointer;
-
-    &>div {
-        font-weight: 100;
-        margin: 0 auto;
-        color: white;
-        letter-spacing: 1px;
-        width: inherit;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        height: 20%;
-        margin-bottom: 2px;
-        border-radius: 3px;
-        background-color: $color-primary;
-        width: 7vw;
-        padding: 0 .25rem;
-        &:hover {
-            cursor: pointer;
-        }
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    &__newTasks {
+        height: 100%;
     }
+    
+    &__tasks {
+        height: fit-content;
+        &--item {
+    
+            &:hover {
+                opacity: .90;
+            }
+            font-weight: 100;
+            margin: 0 auto;
+            color: white;
+            letter-spacing: 1px;
+            width: inherit;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            // height: 20%;
+            margin-bottom: 2px;
+            border-radius: 3px;
+            background-color: $color-primary;
+            width: 7vw;
+            padding: 0 .25rem;
+    
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    &>div {}
 
 }
 
@@ -116,6 +136,7 @@
     display: flex;
     flex-direction: column;
     padding: 1rem 3rem;
+
     &--item {
         margin: .25rem 0;
         font-size: $font-size-secondary;
@@ -123,6 +144,7 @@
         border-right: none;
         border-left: none;
         border-bottom: 3px solid black;
+
         &:hover,
         &:active,
         &:focus {
@@ -132,6 +154,7 @@
             border-left: none;
             border-bottom: 3px solid $color-primary;
         }
+
         &--title {
             font-size: $font-size-primary;
         }

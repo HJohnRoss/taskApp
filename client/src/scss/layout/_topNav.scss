@@ -7,32 +7,87 @@
   z-index: 100;
   position: sticky;
   top: 0;
+  width: 100%;
+  display: flex;
 
-  &__list {
-    display: flex;
+  &__left,
+  &__right {
     list-style: none;
-    width: 25%;
-    justify-content: space-between;
-    margin-left: 1rem;
-    align-items: center;
+    height: 100%;
+    padding: .5rem 0;
+    &--list {
+      margin-bottom: 0;
+      display: flex;
+      list-style: none;
+      align-items: end;
+      font-size: $font-size-secondary;
 
-    &-link {
-      color: $color-white;
-      font-size: 1.5rem;
-      text-decoration: none;
-      transition: all .5s;
-      border-bottom: 1px solid transparent;
+      &-link {
+        color: $color-white;
+        font-size: $font-primary;
+        text-decoration: none;
+        transition: all .5s;
+        border-bottom: 1px solid transparent;
 
-      &:hover {
-        border-bottom: 1px solid $color-secondary;
-        color: $color-secondary;
+        &:hover {
+          border-bottom: 1px solid $color-secondary;
+          color: $color-secondary;
+        }
+      }
+    }
+
+  }
+  &__left {
+    width: 70%
+  }
+
+  &__right {
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    margin-right: 2rem;
+    &--list {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      &-link {
+        margin-left: 1rem;
+      }
+
+      &-search {
+        border-radius: .5rem;
+        justify-content: space-around;
+        text-decoration: none;
+        border: 1px solid $color-grey-light;
+        padding: .25rem 0;
+        width: 15rem;
+
+        &:visited {
+          all: unset;
+        }
+
+        
+        &--input {
+          all: unset;
+          border: none;
+          max-width: 80%;
+        }
+        &--icon {
+          margin-left: .5rem;
+          margin-right: .5rem;
+          &:hover {
+            color: black;
+          }
+        }
       }
     }
   }
 
+
   &__profile {
     padding: 0;
-    font-size: 1.5rem;
     text-decoration: none;
     color: $color-white;
     margin-right: 1rem;

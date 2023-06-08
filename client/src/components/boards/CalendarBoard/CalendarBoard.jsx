@@ -19,6 +19,14 @@ const weekDayToNum = {
     "Mon": 1, "Tue": 2, "Wed": 3, "Thu": 4, "Fri": 5, "Sat": 6, "Sun": 7
 }
 
+const monthToNum = {
+    "Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12",
+}
+
+const numToMonth = {
+    "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+}
+
 const board = {
     title: "First Board",
     tasks: [
@@ -43,15 +51,19 @@ const board = {
     ],
 }
 
-function CalendarBoard({board, tasks}) {
+function CalendarBoard({ board, tasks }) {
 
     const [today, setToday] = useState()
 
-
+    const [currDate, setCurrDate] = useState({
+        currMonth: monthToNum[Date().slice(4, 7)],
+        currDay: Date().slice(8, 10),
+        currYear: Date().slice(11, 15)
+    })
 
     useEffect(() => {
         setToday(Date().slice(0, 3))
-    }, [])
+    }, [currDate])
 
     const [activeTaskIndex, setActiveTaskIndex] = useState();
 
@@ -59,11 +71,19 @@ function CalendarBoard({board, tasks}) {
         setActiveTaskIndex(false)
     }
 
+    const toggleDate = () => {
+        setCurrDate((prevCurrDate) => ({
+            ...prevCurrDate,
+            currMonth: prevCurrDate.currMonth ++
+        }));
+        console.log(currDate.currMonth)
+    };
+
     return (
         <div className='calendar-board' onClick={handleClick}>
             <div className='calendar-board__title'>
                 <h1>Calendar Board</h1>
-                <h2>{fullMonName[Date().slice(4,7).toLowerCase()]}</h2>
+                {currDate &&<h2>{fullMonName[numToMonth[currDate.currMonth].toLowerCase()]}</h2>}
             </div>
             <table className='calendar-board__table'>
                 <thead className='calendar-board__table--row'>
@@ -77,7 +97,7 @@ function CalendarBoard({board, tasks}) {
                         <th className='calendar-board__table--row--head' >{weekDayToNum[today] + 6 > 7 ? numToWeekDay[weekDayToNum[today] + 6 - 7] : numToWeekDay[weekDayToNum[today] + 6]}</th>
                     </tr>
                 </thead>
-                <Month date={today} tasks={tasks} setActiveTaskIndex={setActiveTaskIndex} activeTaskIndex={activeTaskIndex}/>
+                <Month date={today} tasks={tasks} setActiveTaskIndex={setActiveTaskIndex} activeTaskIndex={activeTaskIndex} currDate={currDate} />
             </table>
         </div>
     )

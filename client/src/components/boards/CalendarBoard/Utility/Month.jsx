@@ -21,14 +21,10 @@ const numToMonth = {
     "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
 }
 
-function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
+function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
     const [daysOfTheMonth, setDaysOfTheMonth] = useState([]);
     const [todaysDate, setTodaysDate] = useState(`${Date().slice(11, 15)}-${monthToNum[Date().slice(4, 7)]}-${Date().slice(8, 10)}`)
-    const [currDate, setCurrDate] = useState({
-        currMonth: monthToNum[Date().slice(4, 7)],
-        currDay: Date().slice(8, 10),
-        currYear: Date().slice(11, 15)
-    })
+
 
     const [toggleItem, setToggleItem] = useState(false)
 
@@ -61,7 +57,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
                         thisWeek.push({
                             position: position,
                             tasks: dayTasks,
-                            day: days[j],
+                            day: days[j] < 10 ? `0${days[j]}`: days[j],
                             date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`
                         });
                     } else {
@@ -74,7 +70,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
                         }
                         thisWeek.push({
                             position: position,
-                            day: remainder,
+                            day: numToMonth[thisMonth] +  " "  + remainder,
                             date: `${currDate.currYear}-${thisMonth}-${remainder}`
                         });
                         remainder++;
@@ -91,7 +87,9 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
+        
     };
+
 
     return (
         <tbody>

@@ -45,6 +45,7 @@ const SideNav = () => {
 
   ]
 
+
   return (
     <>
       <nav className="sideNav" style={{ width: `${navCollapse ? "20" : "1"}rem` }}>
@@ -56,12 +57,6 @@ const SideNav = () => {
 
         {navCollapse &&
           <ul className="sideNav__list">
-            <li className="sideNav__list-item">
-              <Link className="sideNav__list-search" to={"/"}>
-                <i className="fa-solid fa-magnifying-glass sideNav__list-search--icon"></i>
-                <input className="sideNav__list-search--input" placeholder="Search Boards"/>
-              </Link>
-            </li>
 
             {/* <li className="sideNav__list-item">
               <Link className="sideNav__list-link" to={"/"}>
@@ -69,7 +64,7 @@ const SideNav = () => {
                 <i className="fa-regular fa-clipboard"></i>
               </Link>
             </li> */}
-            
+
 
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
