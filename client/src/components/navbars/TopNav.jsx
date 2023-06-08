@@ -52,7 +52,7 @@ const TopNav = () => {
         <ul className="topNav__right--list">
           <li className="topNav__right--list-search" ref={searchRef} style={{width: `${searchState ? "100%" : "15rem"}`}} onClick={toggleSearch}>
             <i className="fa-solid fa-magnifying-glass topNav__right--list-search--icon"></i>
-            <input className="topNav__right--list-search--input" placeholder="Search Boards" />
+            <input className="topNav__right--list-search--input" placeholder="Search Boards"  style={{width: `${searchState ? "100%" : "15rem"}`}}/>
           </li>
           <li>
             <Link to={"/"} className="topNav__right--list-link">
