@@ -38,6 +38,10 @@ public class Task {
     @JoinColumn(name = "board_id")
     private Board board;
 
+
+    public Task() {
+    }
+
     public Task(Long id, String title, String date, String description, Date createdAt, 
     Date updatedAt, Board board) {
         this.id = id;

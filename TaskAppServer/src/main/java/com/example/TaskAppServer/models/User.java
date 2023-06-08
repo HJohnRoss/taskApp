@@ -36,7 +36,7 @@ public class User {
     private String email;
 
     // @NotEmpty(message = "Password is required!")
-    // @Size(min = 8,  message = "Password must be between 8 and 128 characters")
+    // @Size(min = 8, message = "Password must be between 8 and 128 characters")
     private String password;
 
     @Column(updatable = false)
@@ -51,13 +51,15 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String userName, String email, String password, Date createdAt, Date updatedAt) {
+    public User(Long id, String userName, String email, String password, Date createdAt, Date updatedAt,
+    List<Board> boards) {
         this.id = id;
         this.email = email;
         this.user_name = userName;
         this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.boards = boards;
     }
 
     @PrePersist
@@ -85,7 +87,6 @@ public class User {
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
-
 
     public String getEmail() {
         return this.email;
@@ -117,6 +118,15 @@ public class User {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+
+    public List<Board> getBoards() {
+        return this.boards;
+    }
+
+    public void setBoards(List<Board> boards) {
+        this.boards = boards;
     }
 
 }

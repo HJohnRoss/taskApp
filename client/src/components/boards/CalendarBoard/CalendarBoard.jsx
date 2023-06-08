@@ -43,17 +43,24 @@ const board = {
     ],
 }
 
-function CalendarBoard() {
+function CalendarBoard({board, tasks}) {
 
     const [today, setToday] = useState()
+
 
 
     useEffect(() => {
         setToday(Date().slice(0, 3))
     }, [])
 
+    const [activeTaskIndex, setActiveTaskIndex] = useState();
+
+    const handleClick = () => {
+        setActiveTaskIndex(false)
+    }
+
     return (
-        <div className='calendar-board'>
+        <div className='calendar-board' onClick={handleClick}>
             <div className='calendar-board__title'>
                 <h1>Calendar Board</h1>
                 <h2>{fullMonName[Date().slice(4,7).toLowerCase()]}</h2>
@@ -70,7 +77,7 @@ function CalendarBoard() {
                         <th className='calendar-board__table--row--head' >{weekDayToNum[today] + 6 > 7 ? numToWeekDay[weekDayToNum[today] + 6 - 7] : numToWeekDay[weekDayToNum[today] + 6]}</th>
                     </tr>
                 </thead>
-                <Month date={today} />
+                <Month date={today} tasks={tasks} setActiveTaskIndex={setActiveTaskIndex} activeTaskIndex={activeTaskIndex}/>
             </table>
         </div>
     )

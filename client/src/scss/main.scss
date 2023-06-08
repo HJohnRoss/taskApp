@@ -1,10 +1,12 @@
 // ABSTRACTS
 @import './abstracts/variables';
 @import './abstracts/mixins';
+@import "./abstracts/utility";
+@import "./abstracts/icons";
 
 // BASE
 @import './base/base';
-
+@import "./base/animations";
 
 // COMPONENTS
 @import './components/dashboard';
