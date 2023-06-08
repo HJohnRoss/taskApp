@@ -11,6 +11,14 @@ const navProps = [
     title: "About",
     to: "",
   },
+  {
+    title: "Login",
+    to: ""
+  },
+  {
+    title: "Register",
+    to: ""
+  }
 ]
 
 const TopNav = () => {
@@ -50,9 +58,9 @@ const TopNav = () => {
       </div>
       <div className="topNav__right">
         <ul className="topNav__right--list">
-          <li className="topNav__right--list-search" ref={searchRef} style={{width: `${searchState ? "100%" : "15rem"}`}} onClick={toggleSearch}>
+          <li className="topNav__right--list-search" ref={searchRef}  onClick={toggleSearch}>
             <i className="fa-solid fa-magnifying-glass topNav__right--list-search--icon"></i>
-            <input className="topNav__right--list-search--input" placeholder="Search Boards"  style={{width: `${searchState ? "100%" : "15rem"}`}}/>
+            <input className="topNav__right--list-search--input" placeholder="Search Boards"  />
           </li>
           <li>
             <Link to={"/"} className="topNav__right--list-link">

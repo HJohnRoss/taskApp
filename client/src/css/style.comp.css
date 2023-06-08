@@ -150,7 +150,6 @@
   border: 1px solid #D3D3D3;
   padding: 0.25rem 0;
   width: 15rem;
-  transition: all 0.7s;
 }
 .topNav__right--list-search:visited {
   all: unset;
@@ -159,15 +158,6 @@
   all: unset;
   border: none;
   max-width: 80%;
-  width: 15rem;
-  transition: all 0.3s;
-  max-height: 3rem;
-}
-.topNav__right--list-search--input:focus {
-  width: 100%;
-}
-.topNav__right--list-search:has(> .topNav__right--list-search--input:focus) {
-  width: 100%;
 }
 .topNav__right--list-search--icon {
   margin-left: 0.5rem;
@@ -457,4 +447,4 @@
   text-align: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.comp.css.map */
