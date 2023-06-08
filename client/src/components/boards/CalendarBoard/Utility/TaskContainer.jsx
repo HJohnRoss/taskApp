@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import BoardService from '../../../services/BoardService';
 
-function TaskContainer({ day, tasks, currDate, fullDate, onClick, selectedTask, index, setSelectedTask }) {
+function TaskContainer(
+    { day, tasks, currDate,
+        fullDate, onClick, selectedTask, index,
+        setSelectedTask, setToggleItem }) {
 
     const addTaskItem = () => {
         alert("hello");
@@ -32,6 +36,15 @@ function TaskContainer({ day, tasks, currDate, fullDate, onClick, selectedTask, 
         })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+
+
+        setSelectedTask(null)
+        setToggleItem(prev => !prev)
+    }
+
     return (
         <div className='calendar-board__table--row--data--container' onClick={handleTaskClick}>
             <div className='calendar-board__table--row--data--container--date'>
@@ -45,12 +58,15 @@ function TaskContainer({ day, tasks, currDate, fullDate, onClick, selectedTask, 
                         </div>
                     )}
             </div>
+            {/* <div>
+
+            </div> */}
             {selectedTask == index && (
                 <div className='calendar-board__table--row--data--container--forms'>
                     <div>
                         <i class="fa-solid fa-xmark" onClick={closeOverlay}></i>
                     </div>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className='form-group'>
                             <input className='form-group--item form-group--item--title' type='text' name='title' placeholder='Add title and time' value={formData.title} onChange={(e) => handleFormChange(e)} />
                         </div>

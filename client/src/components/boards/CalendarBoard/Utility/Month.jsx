@@ -30,6 +30,8 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
         currYear: Date().slice(11, 15)
     })
 
+    const [toggleItem, setToggleItem] = useState(false)
+
     useEffect(() => {
         const addTasks = () => {
             let days = [];
@@ -85,18 +87,11 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
         };
 
         addTasks();
-    }, [tasks, currDate]);
-
-
-    const [taskDate, setTaskDate] = useState()
-    const [isActive,setIsActive] = useState(false)
+    }, [tasks, currDate, toggleItem]);
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
-        console.log(index)
     };
-
-
 
     return (
         <tbody>
@@ -114,7 +109,8 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
                                 selectedTask={activeTaskIndex}
                                 index={day.position}
                                 setSelectedTask={setActiveTaskIndex}
-                                />
+                                setToggleItem={setToggleItem}
+                            />
                         </td>
                     ))}
                 </tr>
