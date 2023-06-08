@@ -27,7 +27,7 @@
 
             &--head {
                 text-transform: capitalize;
-                font-size: 1rem;
+                font-size: $font-size-secondary;
             }
 
             &--data {
@@ -62,7 +62,7 @@
                     }
 
                     &--date {
-                        font-size: .8rem;
+                        font-size: $font-size-primary;
                         max-height: 50%;
                         border-radius: 50%;
                         width: fit-content;
@@ -87,15 +87,15 @@
 .task-container {
     min-height: 50%;
     margin: 0 auto;
-    width: 90%;
-    cursor: pointer;
+    width: 100%;
+    // cursor: pointer;
 
     &>div {
         font-weight: 100;
         margin: 0 auto;
         color: white;
         letter-spacing: 1px;
-        width: 100%;
+        width: inherit;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -104,7 +104,10 @@
         border-radius: 3px;
         background-color: $color-primary;
         width: 7vw;
-        padding: 0 .5rem;
+        padding: 0 .25rem;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
 }
@@ -115,6 +118,7 @@
     padding: 1rem 3rem;
     &--item {
         margin: .25rem 0;
+        font-size: $font-size-secondary;
         border-top: none;
         border-right: none;
         border-left: none;
@@ -129,7 +133,7 @@
             border-bottom: 3px solid $color-primary;
         }
         &--title {
-            font-size: 1.3rem;
+            font-size: $font-size-primary;
         }
 
         &--description {

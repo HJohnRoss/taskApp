@@ -39,11 +39,10 @@
     width: 80%;
     margin-top: 2rem;
     padding: 2rem 0;
-
+    font-size: $font-size-secondary;
     &-search {
       border-radius: .5rem;
       display: flex;
-      font-size: 1rem;
       align-items: center;
       justify-content: space-around;
       text-decoration: none;
@@ -73,7 +72,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 1rem;
       text-decoration: none;
       text-transform: capitalize;
       color: $color-dark;
