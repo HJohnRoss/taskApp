@@ -15,15 +15,13 @@ public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
 
+    //Get all Baords
     public List<Board> getAllBoards() {
         return boardRepository.findAll();
     }
-
+    // Get one Board
     public Board getOneBoard(Long id) {
-        Board board = boardRepository.findById(id).orElse(null);
-        System.out.println(board.getBoardName() + "superman");
-        System.out.println("superman");
-        return board;
+        return boardRepository.findById(id).orElse(null);
     }
 
 }

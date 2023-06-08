@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TaskAppServer.models.Board;
@@ -22,17 +23,18 @@ public class BoardController {
 
     // Get one board 
     @GetMapping("/api/boards/{id}")
-    public Board getOneBoard(Long id) {
-        return  boardService.getOneBoard(id);
+    public Board getOneBoard(@PathVariable("id") Long id) {
+        Board board = boardService.getOneBoard(id);
+        return board;
     }
-
+    
     // Get all boards
     @GetMapping("/api/boards/all")
     public List<Board> getAllBoards() {
         List<Board> boards = boardService.getAllBoards();
         return boards;
     }
-
+    
     // Get recent boards
     @GetMapping("/api/boards/recent")
     public List<Board> getRecentBoards() {
@@ -40,6 +42,4 @@ public class BoardController {
         return boards;
     }
 
-    
 }
-

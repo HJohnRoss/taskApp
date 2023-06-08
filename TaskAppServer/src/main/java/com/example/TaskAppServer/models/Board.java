@@ -1,57 +1,39 @@
 package com.example.TaskAppServer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 @Table(name = "boards")
-
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @NotEmpty(message = "taskName is required!")
-    // @Size(min = 3, max = 255, message = "taskName must be between 3 and 255
-    // characters")
     private String boardName;
 
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "board",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     private List<Task> tasks;
-
+    
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
-
-    // @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
-    // private List<Board> boards;
 
     public Board() {
     }
 
-    public Board(Long id, String boardName, String date, String description, Date createdAt, Date updatedAt,
-            User user, List<Task> tasks) {
+    public Board(Long id, String boardName, Date createdAt, Date updatedAt, User user, List<Task> tasks) {
         this.id = id;
         this.boardName = boardName;
         this.user = user;
@@ -70,8 +52,10 @@ public class Board {
         this.updatedAt = new Date();
     }
 
+    // Getters and setters
+
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -79,23 +63,15 @@ public class Board {
     }
 
     public String getBoardName() {
-        return this.boardName;
+        return boardName;
     }
 
     public void setBoardName(String boardName) {
         this.boardName = boardName;
     }
 
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Date getCreatedAt() {
-        return this.createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
@@ -103,10 +79,28 @@ public class Board {
     }
 
     public Date getUpdatedAt() {
-        return this.updatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

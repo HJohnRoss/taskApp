@@ -1,0 +1,27 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    &-primary {
+        font-weight: 500;
+        padding: .5rem 1.5rem;
+    }
+
+    &-holder {
+        margin-top: auto;
+        margin: 1rem;
+        text-align: right;
+    }
+
+}

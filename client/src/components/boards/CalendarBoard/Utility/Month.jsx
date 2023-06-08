@@ -1,189 +1,126 @@
 import React, { useEffect, useState } from 'react';
-
 import TaskContainer from "./TaskContainer";
 
 const monthDays = {
-    "jan": 31,
-    "feb": 28,
-    "mar": 31,
-    "apr": 30,
-    "may": 31,
-    "jun": 30,
-    "jul": 31,
-    "aug": 31,
-    "sep": 30,
-    "oct": 31,
-    "nov": 30,
-    "dec": 31,
+    "jan": 31, "feb": 28, "mar": 31, "apr": 30, "may": 31, "jun": 30, "jul": 31, "aug": 31, "sep": 30, "oct": 31, "nov": 30, "dec": 31,
 }
 
 const numToWeekDay = {
-    1: "Mon",
-    2: "Tue",
-    3: "Wed",
-    4: "Thu",
-    5: "Fri",
-    6: "Sat",
-    7: "Sun"
+    1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat", 7: "Sun"
 }
 
 const weekDayToNum = {
-    "Mon": 1,
-    "Tue": 2,
-    "Wed": 3,
-    "Thu": 4,
-    "Fri": 5,
-    "Sat": 6,
-    "Sun": 7
+    "Mon": 1, "Tue": 2, "Wed": 3, "Thu": 4, "Fri": 5, "Sat": 6, "Sun": 7
 }
 
-function Month() {
+const monthToNum = {
+    "Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12",
+}
 
-    const [daysOfTheMonth, setDaysOfTheMonth] = useState();
-    const [todaysDate, setTodaysDate] = useState()
+const numToMonth = {
+    "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+}
 
-
-    let days = []
-
-    for (let i = Date().slice(8, 10).length > 1 ? Date().slice(8, 10)[1] : Date().slice(8, 10); i < monthDays[Date().slice(4, 7).toLowerCase()] + 1; i++) {
-        days.push(i)
-    }
-
-    let month = []
-    let j = 0
-    let remainder = 1
-
-    for (let week = 0; week < 4; week++) {
-        let thisWeek = []
-        for (let day = 0; day < 7; day++) {
-            if (days[j]) {
-                thisWeek.push(days[j])
-            }
-            else {
-                thisWeek.push(remainder)
-                remainder++
-            }
-            j++
-        }
-
-        month.push(thisWeek)
-    }
-
-    // remainder = 28 - remainder
-
-    // console.log(remainder)
+function Month({ tasks, setActiveTaskIndex, activeTaskIndex }) {
+    const [daysOfTheMonth, setDaysOfTheMonth] = useState([]);
+    const [todaysDate, setTodaysDate] = useState(`${Date().slice(11, 15)}-${monthToNum[Date().slice(4, 7)]}-${Date().slice(8, 10)}`)
+    const [currDate, setCurrDate] = useState({
+        currMonth: monthToNum[Date().slice(4, 7)],
+        currDay: Date().slice(8, 10),
+        currYear: Date().slice(11, 15)
+    })
 
     useEffect(() => {
-        setDaysOfTheMonth(month)
-    }, [])
+        const addTasks = () => {
+            let days = [];
+
+            for (let i = currDate.currDay.length > 1 ? currDate.currDay[1] : currDate.currDay; i < monthDays[numToMonth[currDate.currMonth].toLowerCase()] + 1; i++) {
+                days.push(i)
+            }
+
+            let month = [];
+            let j = 0;
+            let remainder = 1;
+
+            let position = 1
+            for (let week = 0; week < 4; week++) {
+                let thisWeek = [];
+                for (let day = 0; day < 7; day++) {
+                    let dayTasks = [];
+                    position++
+                    if (days[j]) {
+                        if (tasks) {
+                            for (let i of tasks) {
+                                if (i.date == `${currDate.currYear}-${currDate.currMonth}-${days[j]}`) {
+                                    dayTasks.push(i)
+                                }
+                            }
+                        }
+                        thisWeek.push({
+                            position: position,
+                            tasks: dayTasks,
+                            day: days[j],
+                            date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`
+                        });
+                    } else {
+                        let thisMonth = parseInt(currDate.currMonth) + 1
+                        if (parseInt(thisMonth) < 10) {
+                            thisMonth = `0${thisMonth}`
+                        }
+                        if (remainder < 10) {
+                            remainder = `0${remainder}`
+                        }
+                        thisWeek.push({
+                            position: position,
+                            day: remainder,
+                            date: `${currDate.currYear}-${thisMonth}-${remainder}`
+                        });
+                        remainder++;
+                    }
+                    j++;
+                }
+                month.push(thisWeek);
+            }
+            setDaysOfTheMonth(month);
+        };
+
+        addTasks();
+    }, [tasks, currDate]);
+
+
+    const [taskDate, setTaskDate] = useState()
+    const [isActive,setIsActive] = useState(false)
+
+    const handleTaskClick = (index) => {
+        setActiveTaskIndex(index);
+        console.log(index)
+    };
+
 
 
     return (
         <tbody>
-            {daysOfTheMonth && daysOfTheMonth.map((week, i) => (
-                <tr className='calendar-board__table--row' key={i}>
-                    {week.map((day, i) => (
-                        <td key={i} className='calendar-board__table--row--data' >
-                            <TaskContainer key={i} date={day} tasks={["yes", "yess", "", "no"]} />
+            {daysOfTheMonth.map((week, i) => (
+                <tr className="calendar-board__table--row" key={i}>
+                    {week.map((day, j) => (
+                        <td key={j} className="calendar-board__table--row--data">
+                            <TaskContainer
+                                key={j}
+                                day={day.day}
+                                fullDate={day.date}
+                                tasks={day.tasks}
+                                currDate={currDate}
+                                onClick={() => handleTaskClick(day.position)}
+                                selectedTask={activeTaskIndex}
+                                index={day.position}
+                                setSelectedTask={setActiveTaskIndex}
+                                />
                         </td>
                     ))}
                 </tr>
             ))}
-
-            {/* <tr className='calendar-board__table--row'>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={Date().slice(8, 10)} tasks={["yes", "yessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"2"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"3"} tasks={[]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"4"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"5"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"6"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"7"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-            </tr>
-            <tr className='calendar-board__table--row'>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={Date().slice(8, 10)} tasks={["yes", "yessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"2"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"3"} tasks={[]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"4"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"5"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"6"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"7"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-            </tr>
-            <tr className='calendar-board__table--row'>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={Date().slice(8, 10)} tasks={["yes", "yessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"2"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"3"} tasks={[]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"4"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"5"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"6"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"7"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-            </tr>
-            <tr className='calendar-board__table--row'>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={Date().slice(8, 10)} tasks={["yes", "yessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"2"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"3"} tasks={[]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"4"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"5"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data'>
-                    <TaskContainer date={"6"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-                <td className='calendar-board__table--row--data' >
-                    <TaskContainer date={"7"} tasks={["yes", "yes", "", "no"]} />
-                </td>
-            </tr> */}
         </tbody>
-    )
-}
+    );
+};
 
 export default Month;

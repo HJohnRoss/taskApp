@@ -1,0 +1,12 @@
+.fa-xmark {
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-left: auto;
+        color: grey;
+        border-radius: 50%;
+        padding: .3rem .5rem;
+        &:hover {
+            background-color: rgba(196, 196, 196, 0.951);
+        }
+
+}
