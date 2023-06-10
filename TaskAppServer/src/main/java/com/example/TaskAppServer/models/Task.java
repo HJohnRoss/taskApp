@@ -28,6 +28,8 @@ public class Task {
 
     public String description;
 
+    public Boolean isCompleted;
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
@@ -43,7 +45,7 @@ public class Task {
     }
 
     public Task(Long id, String title, String date, String description, Date createdAt, 
-    Date updatedAt, Board board) {
+    Date updatedAt, Board board, Boolean isCompleted) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -51,6 +53,7 @@ public class Task {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.board = board;
+        this.isCompleted = isCompleted;
     }
 
 
@@ -102,5 +105,17 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
+
+    public Boolean isIsCompleted() {
+        return this.isCompleted;
+    }
+
+    public Boolean getIsCompleted() {
+        return this.isCompleted;
+    }
+
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
 
 }

@@ -6,6 +6,9 @@ function TaskBoard() {
         <div className='task-board'>
             <TaskBoardTable />
             <TaskBoardTable />
+            <TaskBoardTable />
+            <TaskBoardTable />
+            <TaskBoardTable />
         </div>
     )
 }

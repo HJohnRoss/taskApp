@@ -89,6 +89,33 @@
   justify-content: space-between;
 }
 
+.login {
+  height: 100%;
+  background: #696969;
+}
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 3.4rem);
+}
+.login__container--form {
+  background-color: rgb(66, 133, 244);
+  border: 2px solid #c91743;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.login__container--form--header {
+  color: #252A34;
+}
+.login__container--form--label {
+  color: #252A34;
+  display: block;
+}
+.login__container--form--input {
+  display: block;
+}
+
 .topNav {
   display: flex;
   justify-content: space-between;
@@ -100,6 +127,7 @@
   top: 0;
   width: 100%;
   display: flex;
+  height: 3.4rem;
 }
 .topNav__left, .topNav__right {
   list-style: none;
@@ -125,10 +153,16 @@
   color: #FF2E63;
 }
 .topNav__left {
-  width: 70%;
+  width: 50%;
+}
+.topNav__left--list {
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
 }
 .topNav__right {
   width: 50%;
+  max-width: 5;
   display: flex;
   justify-content: right;
   margin-right: 2rem;
@@ -150,6 +184,7 @@
   border: 1px solid #D3D3D3;
   padding: 0.25rem 0;
   width: 15rem;
+  transition: all 0.4s;
 }
 .topNav__right--list-search:visited {
   all: unset;
@@ -157,14 +192,23 @@
 .topNav__right--list-search--input {
   all: unset;
   border: none;
-  max-width: 80%;
+  max-width: 50%;
+  width: 15rem;
+  max-width: 50%;
+  max-height: 3rem;
+}
+.topNav__right--list-search--input:focus {
+  width: 20rem;
+}
+.topNav__right--list-search:has(> .topNav__right--list-search--input:focus) {
+  width: 20rem;
 }
 .topNav__right--list-search--icon {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
 .topNav__right--list-search--icon:hover {
-  color: black;
+  color: #000;
 }
 .topNav__profile {
   padding: 0;

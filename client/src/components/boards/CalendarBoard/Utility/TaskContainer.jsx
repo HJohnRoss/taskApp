@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BoardService from '../../../services/BoardService';
 
+
+const numToMonth = {
+    "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+}
+
+
+
 function TaskContainer(
     { day, tasks, currDate,
         fullDate, onClick, selectedTask, index,
         setSelectedTask, setToggleItem }) {
-
-    const addTaskItem = () => {
-        alert("hello");
-    };
-
-
 
     const [formData, setFormData] = useState({
         title: "",
@@ -37,8 +38,30 @@ function TaskContainer(
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formData)
-
         setSelectedTask(null)
+    }
+
+
+    const displayTaskInfo = (index, task) => {
+        setDisplayTaskInfoIndex(index)
+        setSelectedTask(task)
+    }
+
+    const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
+
+    const deleteTaskItem = () => {
+        setDisplayTaskInfoIndex(null)
+    }
+
+    const editTaskItem = (index, task) => {
+        setSelectedTask(index)
+        setDisplayTaskInfoIndex(null)
+        setFormData({
+            id: task.id,
+            title: task.title,
+            date: fullDate,
+            description: task.description
+        })
     }
 
     useEffect(() => {
@@ -46,6 +69,7 @@ function TaskContainer(
             if (formRef.current && !formRef.current.contains(event.target)) {
                 // Clear the form data when clicking outside the form
                 setSelectedTask(null)
+                setDisplayTaskInfoIndex(null)
             }
         };
 
@@ -54,26 +78,45 @@ function TaskContainer(
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
-
-    const displayTaskInfo = (task) => {
-        console.log(task)
-        alert("Editing Tasks")
-    }
+    }, [displayTaskInfoIndex]);
 
     return (
         <div className='calendar-board__table--row--data--container' onClick={handleTaskClick}>
             <div className='calendar-board__table--row--data--container--date'>
                 {day}
             </div>
-            <div className='task-container' >
+            <div className='task-container'>
                 <div className='task-container__tasks' >
                     {tasks &&
-                        tasks.map((task, i) =>
-                            <div key={i} className='task-container__tasks--item'  onClick={() => displayTaskInfo(task)}>
-                                {task.title}
+                        tasks.map((task, i) => (
+                            <div key={task.id} className='task-container__tasks--holder'>
+                                <div  className='task-container__tasks--item' onClick={() => displayTaskInfo(task.id, task)}>
+                                    {task.title}
+                                </div>
+                                {displayTaskInfoIndex == task.id &&
+                                    <div className='task-info' ref={formRef}>
+                                        <div className='icon-holder'>
+                                            <div className='icon-holder__right'>
+                                                <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem()}></i>
+                                                <i className="fa-solid fa-pen" onClick={() => editTaskItem(index, task)} ></i>
+                                            </div>
+                                            <i className="fa-solid fa-xmark" onClick={() => setDisplayTaskInfoIndex(null)}></i>
+                                        </div>
+                                        <div className='task-info--container'>
+                                            <h4 className='task-info--container--header'>{task.title}</h4>
+                                            <div className='task-info--container--info'>
+                                                <i className="fa-regular fa-clock"></i>
+                                                <p>{`${numToMonth[fullDate.slice(5,7)]} ${fullDate.slice(-2)} ${fullDate.slice(0,4)} `}</p>
+                                            </div>
+                                            <div className='task-info--container--info'>
+                                                <i className="fa-regular fa-note-sticky"></i>
+                                                <p>{task.description}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                        )}
+                        ))}
                 </div>
                 <div className='task-container__newTasks' onClick={onClick}>
 
@@ -81,10 +124,10 @@ function TaskContainer(
             </div>
             {selectedTask == index && (
                 <div className='calendar-board__table--row--data--container--forms'>
-                    <div>
-                        <i className="fa-solid fa-xmark"></i>
-                    </div>
                     <form ref={formRef} onSubmit={handleSubmit}>
+                        <div className='calendar-board__table--row--data--container--forms--header'>
+                            <i className="fa-solid fa-xmark" onClick={()=>setSelectedTask(null)}></i>
+                        </div>
                         <div className='form-group'>
                             <input className='form-group--item form-group--item--title' type='text' name='title' placeholder='Add title and time' value={formData.title} onChange={(e) => handleFormChange(e)} />
                         </div>
@@ -100,6 +143,7 @@ function TaskContainer(
                     </form>
                 </div>
             )}
+            { }
         </div>
     );
 }
