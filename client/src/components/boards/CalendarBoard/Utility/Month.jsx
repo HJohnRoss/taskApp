@@ -87,9 +87,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
-        
     };
-
 
     return (
         <tbody>

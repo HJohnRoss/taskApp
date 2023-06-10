@@ -1,13 +1,22 @@
-.fa-xmark {
-        font-size: 1.3rem;
-        display: inline-block;
-        margin-left: auto;
-        color: grey;
-        border-radius: 50%;
-        padding: .3rem .5rem;
-        &:hover {
-            cursor: pointer;
-            background-color: rgba(196, 196, 196, 0.951);
-        }
+.fa-solid, .fa-regular {
+    color: black;
+    font-size: 1.3rem;
+    display: inline-block;
+    
+    // color: grey;
+    border-radius: 50%;
+    padding: .3rem .5rem;
 
+}
+
+.fa-xmark, .fa-trash-can, .fa-pen {
+    margin-left: auto;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(237, 237, 237, 0.951);
+    }
+}
+
+.icon-holder {
+    display: flex;
 }

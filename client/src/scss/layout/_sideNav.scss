@@ -8,8 +8,7 @@
   // bottom: 0;
   background-color: rgba($color-white, 0.1);
   border-radius: 0 1rem 1rem 0;
-  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
-  ;
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);;
   z-index: 99;
   padding: 0 1rem;
   transition: width .2s ease;
@@ -19,8 +18,11 @@
     position: absolute;
     padding: .75rem .75rem;
     background-color: rgb(203, 203, 203);
+    border-top-left-radius: 0;
     border-top-right-radius: 50%;
+    border-bottom-right-radius: 0;
     border-bottom-left-radius: 15%;
+  
     top: 0rem;
     right: 0rem;
 

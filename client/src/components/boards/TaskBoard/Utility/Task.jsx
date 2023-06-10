@@ -1,4 +1,6 @@
-function Task({ title, description, status, date }) {
+import { useState } from "react"
+
+function Task({ title, description, status, date, selectAllTasks }) {
 
     let bStyle = ""
 
@@ -10,10 +12,28 @@ function Task({ title, description, status, date }) {
         bStyle = "#FF3333"
     }
 
+    const [taskData,setTaskData] = useState({
+        title,
+        status,
+        date,
+        selected: false
+    })
+
+    const handleChange = (e) => {
+        
+        if(e.target.checked){
+            setTaskData({
+                ...taskData,
+                selected: e.target.checked
+            })
+            console.log(e.target.checked)
+        }
+    }
+
     return (
         <tr className='task-board__table--row'>
             <td className='task-board__table--row--data'>
-                <input className='btn' type="checkbox" />
+                <input className='form-check-input' type="checkbox" checked={selectAllTasks ? selectAllTasks : taskData.selected} onChange={handleChange}/>
             </td>
             <td className='task-board__table--row--data'>
                 {title}

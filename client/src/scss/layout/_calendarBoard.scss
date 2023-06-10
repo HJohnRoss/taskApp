@@ -47,8 +47,8 @@
                         position: absolute;
                         font-size: $font-size-small;
                         max-width: 50vw;
-                        top: -4rem;
-                        right: -2rem;
+                        top: -5vw;
+                        right: 10vw;
                         background-color: white;
                         border-radius: 1rem;
                         border: 2px solid white;
@@ -57,7 +57,8 @@
                         animation-fill-mode: backwards;
                         box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
 
-                        &>div {
+                        &--header {
+                            padding: 0rem 1rem 0;
                             text-align: right;
                             background-color: rgba(223, 223, 223, 0.198);
                         }
@@ -95,17 +96,25 @@
     max-height: 100%;
     display: flex;
     flex-direction: column;
+
     &__newTasks {
         height: 100%;
     }
-    
+
     &__tasks {
+
+        &--holder {
+            position: relative;
+        }
+
         height: fit-content;
+
         &--item {
-    
+
             &:hover {
                 opacity: .90;
             }
+
             font-weight: 100;
             margin: 0 auto;
             color: white;
@@ -120,7 +129,7 @@
             background-color: $color-primary;
             width: 7vw;
             padding: 0 .25rem;
-    
+
             &:hover {
                 cursor: pointer;
             }
@@ -131,6 +140,58 @@
     &>div {}
 
 }
+
+.task-info {
+
+    animation: moveInLeft ease-in .3s;
+    position: absolute;
+    width: 25vw;
+    max-width: 35vh;
+    min-height: fit-content;
+    // max-height: 20vh;
+    top: 0;
+    left: 10vw;
+    z-index: 50000;
+    border-radius: 1rem;
+    border: 2px solid white;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
+
+    &--container {
+
+        margin-top: 5%;
+
+        text-align: left;
+
+        &--info {
+            font-size: $font-size-mini;
+            display: flex;
+            // justify-content: space-between;
+            align-items: start;
+            & > i {
+                margin-top: -.3rem;
+            }
+
+            &> :first-child {
+                margin-right: 10%;
+            }
+
+            &>p {
+                margin-top: auto;
+            }
+        }
+
+        &--header {
+            font-size: $font-size-primary;
+            // margin-bottom: 2vh;
+        }
+    }
+
+
+
+}
+
 
 .form-group {
     display: flex;
