@@ -12,21 +12,6 @@ const SideNav = () => {
     // setNavWidth(1)
   }
 
-  {/* <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className="sideNav__btn-open"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-    />
-  </svg> */}
-
   const boards = [
     {
       title: "board 1"
@@ -67,7 +52,7 @@ const SideNav = () => {
 
 
             <li className="sideNav__list-item sideNav__list-dropdown">
-              <Link className="sideNav__list-link" to={"/"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
+              <Link className="sideNav__list-link" to={"/boards/1"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>
               <ul className="sideNav__dropdown">
                 {boards.map((board, i) => (<li key={i}><Link className="sideNav__list-link" to={"/"}>{board.title}</Link></li>))}
               </ul>

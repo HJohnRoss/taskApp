@@ -11,17 +11,28 @@ import com.example.TaskAppServer.repositories.BoardRepository;
 
 @Service
 public class BoardService {
-    
+
     @Autowired
     private BoardRepository boardRepository;
 
-    //Get all Baords
+    // Get all Baords
     public List<Board> getAllBoards() {
         return boardRepository.findAll();
     }
+
     // Get one Board
     public Board getOneBoard(Long id) {
         return boardRepository.findById(id).orElse(null);
+    }
+
+    // Create board
+    public Board createBoard(Board board) {
+        return boardRepository.save(board);
+    }
+
+    // Delete board
+    public void deleteBoard(Long id) {
+        boardRepository.deleteById(id);
     }
 
 }

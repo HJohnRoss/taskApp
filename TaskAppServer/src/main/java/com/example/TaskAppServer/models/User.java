@@ -52,7 +52,7 @@ public class User {
     }
 
     public User(Long id, String userName, String email, String password, Date createdAt, Date updatedAt,
-    List<Board> boards) {
+            List<Board> boards) {
         this.id = id;
         this.email = email;
         this.user_name = userName;
@@ -119,7 +119,6 @@ public class User {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 
     public List<Board> getBoards() {
         return this.boards;

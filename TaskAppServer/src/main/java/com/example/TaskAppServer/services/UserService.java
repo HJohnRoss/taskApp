@@ -12,7 +12,7 @@ import com.example.TaskAppServer.repositories.UserRepository;
 
 @Service
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
@@ -33,7 +33,7 @@ public class UserService {
         if (result.hasErrors()) {
             return null;
         }
-        
+
         return user;
     }
 

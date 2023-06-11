@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "tasks")
 public class Task {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,12 +40,11 @@ public class Task {
     @JoinColumn(name = "board_id")
     private Board board;
 
-
     public Task() {
     }
 
-    public Task(Long id, String title, String date, String description, Date createdAt, 
-    Date updatedAt, Board board, Boolean isCompleted) {
+    public Task(Long id, String title, String date, String description, Date createdAt,
+            Date updatedAt, Board board, Boolean isCompleted) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -55,7 +54,6 @@ public class Task {
         this.board = board;
         this.isCompleted = isCompleted;
     }
-
 
     public Long getId() {
         return this.id;
@@ -104,7 +102,6 @@ public class Task {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 
     public Boolean isIsCompleted() {
         return this.isCompleted;
