@@ -9,8 +9,6 @@ const axiosInstance = axios.create({
 })
 
 class BoardService {
-
-
   getAll() {
     return axiosInstance.get("/boards/all")
   }
@@ -22,6 +20,10 @@ class BoardService {
   // not finished:
   getRecent() {
     return axiosInstance.get("/boards/recent")
+  }
+
+  create(data) {
+    return axiosInstance.post("/boards/new")
   }
 
   // NOT MADE YET:

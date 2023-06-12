@@ -25,9 +25,10 @@ public class Board {
 
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     private List<Task> tasks;
-    
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Board() {
@@ -101,6 +102,5 @@ public class Board {
     public void setUser(User user) {
         this.user = user;
     }
-
 
 }

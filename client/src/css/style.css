@@ -42,6 +42,10 @@
   display: flex;
 }
 
+.fa-angle-down, .fa-angle-right {
+  cursor: pointer;
+}
+
 *,
 *::after,
 *::before {
@@ -132,9 +136,7 @@
   z-index: 100;
   position: sticky;
   top: 0;
-  width: 100%;
   display: flex;
-  height: 3.4rem;
 }
 .topNav__left, .topNav__right {
   list-style: none;
@@ -191,7 +193,7 @@
   border: 1px solid #D3D3D3;
   padding: 0.25rem 0;
   width: 15rem;
-  transition: all 0.4s;
+  transition: all 0.01s;
   max-height: 100%;
 }
 .topNav__right--list-search:visited {
@@ -224,6 +226,35 @@
 .topNav__profile:hover {
   border-bottom: 1px solid #FF2E63;
   color: #FF2E63;
+}
+
+.query-selection-box {
+  position: absolute;
+  box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
+  border-radius: 1rem;
+  background-color: #252A34;
+  margin-top: 0.5rem;
+  width: 20rem;
+  padding: 1rem 0;
+}
+.query-selection-box__item {
+  padding-bottom: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+.query-selection-box__item--hover-effect {
+  background-color: #363d49;
+}
+.query-selection-box__item--link {
+  width: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+.query-selection-box__item a:hover {
+  text-decoration: underline;
+}
+.query-selection-box__item a:visited {
+  color: inherit;
 }
 
 .sideNav {
@@ -336,7 +367,7 @@
   margin-bottom: 1rem;
 }
 .calendar-board__table {
-  height: 80%;
+  height: 90%;
   text-align: center;
   margin: 0 auto;
   width: 100%;
@@ -345,7 +376,7 @@
   width: 100%;
 }
 .calendar-board__table--row:not(:first-child) {
-  height: 25%;
+  height: 20%;
 }
 .calendar-board__table--row--head {
   text-transform: capitalize;
@@ -383,13 +414,14 @@
   background-color: rgba(223, 223, 223, 0.198);
 }
 .calendar-board__table--row--data--container--date {
-  font-size: 1rem;
+  font-size: 12px;
   max-height: 50%;
   border-radius: 50%;
   width: fit-content;
   padding: 5px 10px;
   margin: 0 auto;
   transition: all 0.4s;
+  white-space: nowrap;
 }
 .calendar-board__table--row--data--container--date:hover {
   background-color: #696969;
@@ -505,39 +537,95 @@
 
 .board {
   width: 100%;
-  margin-right: 2%;
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
+  border-top-radius: 1rem;
   text-align: left;
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 4rem;
+  min-height: 90.2vh;
+  overflow: auto;
+  scroll-behavior: auto;
+}
+.board::-webkit-scrollbar-thumb {
+  background-color: #666;
+  /* Adjust the thumb color when hovering as needed */
+}
+.board::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.75rem;
+  position: absolute;
+  /* Adjust this value to match the width of the scrollbar in your browser */
+}
+.board::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  /* Adjust the background color as needed */
 }
 
-.task-board {
-  width: 100%;
-}
 .task-board__table {
-  height: 100%;
+  border-left: 3px purple solid;
+  border-top-left-radius: 4px;
   font-size: 1rem;
-  width: 75%;
 }
 .task-board__table:not(:first-child) {
   margin-bottom: 3rem;
 }
-.task-board__table--row {
-  width: 100%;
+.task-board__table--header {
+  display: flex;
+  white-space: nowrap;
 }
-.task-board__table--row--data, .task-board__table--row--header {
+.task-board__table--header > i {
+  padding: 0 1rem;
+  margin-right: 1rem;
+}
+.task-board__table--dueDate {
+  text-align: center;
+}
+.task-board__table--dueDate > span {
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  background-color: rgb(66, 133, 244);
+  padding: 0.25rem 0.5rem;
+  color: white;
+}
+.task-board__table--row:last-child {
+  width: 100%;
+  border: 1px solid #D3D3D3;
+}
+.task-board__table--row--data {
+  width: 5vw;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 100;
+  margin: 0 auto;
+  border: 1px solid #D3D3D3;
+}
+.task-board__table--row--data:hover {
+  background-color: #D3D3D3;
+}
+.task-board__table--row--data:first-child {
+  text-align: center;
+  width: 10px;
+}
+.task-board__table--row--data--newTask, .task-board__table--row--data--input {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+}
+.task-board__table--row--data--newTask:hover, .task-board__table--row--data--newTask:focus, .task-board__table--row--data--input:hover, .task-board__table--row--data--input:focus {
+  border: 1px solid #D3D3D3;
+}
+.task-board__table--row--header {
+  text-align: center;
   max-width: 5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 100;
   margin: 0 auto;
   border: 1px solid #D3D3D3;
-  text-align: center;
+}
+.task-board__table--row--header:first-child {
+  max-width: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

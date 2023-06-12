@@ -32,7 +32,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
         const addTasks = () => {
             let days = [];
 
-            for (let i = currDate.currDay.length > 1 ? currDate.currDay[1] : currDate.currDay; i < monthDays[numToMonth[currDate.currMonth].toLowerCase()] + 1; i++) {
+            for (let i = currDate.currDay.length < 1 ? currDate.currDay[1] : currDate.currDay; i < monthDays[numToMonth[currDate.currMonth].toLowerCase()] + 1; i++) {
                 days.push(i)
             }
 
@@ -41,7 +41,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
             let remainder = 1;
 
             let position = 1
-            for (let week = 0; week < 4; week++) {
+            for (let week = 0; week < 5; week++) {
                 let thisWeek = [];
                 for (let day = 0; day < 7; day++) {
                     let dayTasks = [];
