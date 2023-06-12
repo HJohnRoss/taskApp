@@ -1,6 +1,8 @@
 import { useState } from "react"
 
-function Task({ title, description, status, date, selectAllTasks }) {
+function Task(props) {
+
+    const { title, status, date, description, selectAllTasks } = props;
 
     let bStyle = ""
 
@@ -12,16 +14,16 @@ function Task({ title, description, status, date, selectAllTasks }) {
         bStyle = "#FF3333"
     }
 
-    const [taskData,setTaskData] = useState({
+    const [taskData, setTaskData] = useState({
         title,
         status,
         date,
-        selected: false
+        description,
     })
 
-    const handleChange = (e) => {
-        
-        if(e.target.checked){
+    const handleCheck = (e) => {
+
+        if (e.target.checked) {
             setTaskData({
                 ...taskData,
                 selected: e.target.checked
@@ -30,21 +32,28 @@ function Task({ title, description, status, date, selectAllTasks }) {
         }
     }
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setTaskData({
+            ...taskData,
+            [name]: value
+        })
+    }
+
     return (
         <tr className='task-board__table--row'>
             <td className='task-board__table--row--data'>
-                <input className='form-check-input' type="checkbox" checked={selectAllTasks ? selectAllTasks : taskData.selected} onChange={handleChange}/>
+                <input className='form-check-input' type="checkbox" checked={selectAllTasks || taskData.selected} onChange={handleCheck} />
             </td>
-            <td className='task-board__table--row--data'>
-                {title}
-            </td>
-            <td className='task-board__table--row--data' style={{ backgroundColor: bStyle, color: "white" }}>
-                {status}
-            </td>
-            <td className='task-board__table--row--data'>
-                {date}
-            </td>
+
+            {props && Object.keys(props).filter(item => item != "selectAllTasks").map((key, i) => (
+                <td key={i} className='task-board__table--row--data'>
+                    <input className='form-input task-board__table--row--data--input' name={key} value={taskData[key]} onChange={(e) => handleChange(e)} />
+                </td>
+            ))}
+
         </tr >
+
     )
 }
 

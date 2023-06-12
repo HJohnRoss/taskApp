@@ -72,6 +72,7 @@ const TopNav = () => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setSearchState(false);
         setQueryOpen(false);
+        setQuery("")
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
