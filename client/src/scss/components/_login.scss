@@ -1,31 +1,63 @@
 .login {
   height: 100%;
-  background: $color-grey-dark;
-  
+
   &__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 3.4rem);
+    height: calc(100vh - 3.6rem);
 
 
     &--form {
-      background-color: $color-primary;
-      border: 2px solid $color-secondary-dark;
+      border: 2px solid $color-grey-dark;
       border-radius: 1rem;
       padding: 2rem;
 
       &--header {
         color: $color-dark;
+        font-size: 2.6rem;
+        margin-bottom: .5rem;
       }
 
       &--label {
         color: $color-dark;
         display: block;
+        font-size: .9rem;
       }
 
       &--input {
         display: block;
+        border: .1rem solid $color-dark;
+        border-radius: 1rem;
+        height: 2rem;
+        width: 20rem;
+        padding: .5rem;
+        margin-bottom: .7rem;
+        font-size: .75rem;
+      }
+
+      &--btn {
+        border: .1rem solid $color-grey-light;
+        background-color: $color-blue-light;
+        border-radius: 4rem;
+        padding: .5rem 1.5rem;
+        transition: .3s all;
+        font-size: .75rem;
+
+        &:hover {
+          box-shadow: .2rem .2rem .2rem .1rem rgba($color-dark, .1);
+          margin-top: -.2rem;
+          margin-bottom: .2rem;
+        }
+
+        &--disabled {
+          border: .1rem solid $color-grey-light;
+          background-color: $color-grey-light;
+          border-radius: 4rem;
+          padding: .5rem 1.5rem;
+          transition: .3s all;
+          font-size: .75rem;
+        }
       }
     }
   }

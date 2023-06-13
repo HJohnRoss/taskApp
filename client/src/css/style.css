@@ -102,29 +102,58 @@
 
 .login {
   height: 100%;
-  background: #696969;
 }
 .login__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 3.4rem);
+  height: calc(100vh - 3.6rem);
 }
 .login__container--form {
-  background-color: rgb(66, 133, 244);
-  border: 2px solid #c91743;
+  border: 2px solid #696969;
   border-radius: 1rem;
   padding: 2rem;
 }
 .login__container--form--header {
   color: #252A34;
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
 }
 .login__container--form--label {
   color: #252A34;
   display: block;
+  font-size: 0.9rem;
 }
 .login__container--form--input {
   display: block;
+  border: 0.1rem solid #252A34;
+  border-radius: 1rem;
+  height: 2rem;
+  width: 20rem;
+  padding: 0.5rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.75rem;
+}
+.login__container--form--btn {
+  border: 0.1rem solid #D3D3D3;
+  background-color: rgb(162, 197, 253);
+  border-radius: 4rem;
+  padding: 0.5rem 1.5rem;
+  transition: 0.3s all;
+  font-size: 0.75rem;
+}
+.login__container--form--btn:hover {
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(37, 42, 52, 0.1);
+  margin-top: -0.2rem;
+  margin-bottom: 0.2rem;
+}
+.login__container--form--btn--disabled {
+  border: 0.1rem solid #D3D3D3;
+  background-color: #D3D3D3;
+  border-radius: 4rem;
+  padding: 0.5rem 1.5rem;
+  transition: 0.3s all;
+  font-size: 0.75rem;
 }
 
 .topNav {
@@ -193,7 +222,7 @@
   border: 1px solid #D3D3D3;
   padding: 0.25rem 0;
   width: 15rem;
-  transition: all 0.01s;
+  transition: all 0.1s;
   max-height: 100%;
 }
 .topNav__right--list-search:visited {

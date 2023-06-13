@@ -17,7 +17,7 @@ const navProps = [
   },
   {
     title: "Register",
-    link: ""
+    link: "register"
   }
 ];
 
