@@ -41,9 +41,23 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
             let remainder = 1;
 
             let position = 1
+            let turningPoint = 0;
+            let direction = true;
+            let switched = true
             for (let week = 0; week < 5; week++) {
                 let thisWeek = [];
                 for (let day = 0; day < 7; day++) {
+                    if (turningPoint < 2) {
+                        direction = true
+                    } else if (turningPoint > 2) {
+                        direction = false
+                    }
+                    turningPoint++
+
+                    if (turningPoint == 7) {
+                        turningPoint = 0
+                    }
+
                     let dayTasks = [];
                     position++
                     if (days[j]) {
@@ -57,8 +71,9 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                         thisWeek.push({
                             position: position,
                             tasks: dayTasks,
-                            day: days[j] < 10 ? `0${days[j]}`: days[j],
-                            date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`
+                            day: days[j] < 10 ? `0${days[j]}` : days[j],
+                            date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`,
+                            point: direction,
                         });
                     } else {
                         let thisMonth = parseInt(currDate.currMonth) + 1
@@ -70,8 +85,9 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                         }
                         thisWeek.push({
                             position: position,
-                            day: numToMonth[thisMonth] +  " "  + remainder,
-                            date: `${currDate.currYear}-${thisMonth}-${remainder}`
+                            day: numToMonth[thisMonth] + " " + remainder,
+                            date: `${currDate.currYear}-${thisMonth}-${remainder}`,
+                            point: direction,
                         });
                         remainder++;
                     }
@@ -106,6 +122,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                                 index={day.position}
                                 setSelectedTask={setActiveTaskIndex}
                                 setToggleItem={setToggleItem}
+                                point={day.point}
                             />
                         </td>
                     ))}

@@ -22,6 +22,24 @@
   text-align: right;
 }
 
+.to-right {
+  top: 1rem;
+  left: 1rem;
+}
+.to-right-form {
+  top: 1rem;
+  left: 10vw;
+}
+
+.to-left {
+  top: 1rem;
+  right: 1rem;
+}
+.to-left-form {
+  top: 1rem;
+  right: 10vw;
+}
+
 .fa-solid, .fa-regular {
   color: black;
   font-size: 1.3rem;
@@ -427,18 +445,17 @@
   position: absolute;
   font-size: 1rem;
   max-width: 50vw;
-  top: -5vw;
-  right: 10vw;
+  margin: 0 auto;
   background-color: white;
   border-radius: 1rem;
   border: 2px solid white;
-  z-index: 100000;
-  animation: moveInLeft 0.2s ease-out 0.2s;
+  z-index: 100;
+  animation: moveInLeft 0.4s ease-out;
   animation-fill-mode: backwards;
   box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
 }
 .calendar-board__table--row--data--container--forms--header {
-  padding: 0rem 1rem 0;
+  padding: 0rem 1rem;
   text-align: right;
   background-color: rgba(223, 223, 223, 0.198);
 }
@@ -481,7 +498,6 @@
   margin: 0 auto;
   color: white;
   letter-spacing: 1px;
-  width: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -497,15 +513,15 @@
 .task-container__tasks--item:hover {
   cursor: pointer;
 }
+
 .task-info {
   animation: moveInLeft ease-in 0.3s;
   position: absolute;
   width: 25vw;
-  max-width: 35vh;
+  min-width: 35vh;
+  max-width: 45vw;
   min-height: fit-content;
-  top: 0;
-  left: 10vw;
-  z-index: 50000;
+  z-index: 500 !important;
   border-radius: 1rem;
   border: 2px solid white;
   background-color: white;
@@ -577,15 +593,17 @@
 .board::-webkit-scrollbar-thumb {
   background-color: #666;
   /* Adjust the thumb color when hovering as needed */
+  position: absolute;
 }
 .board::-webkit-scrollbar {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0;
+  height: 0;
   position: absolute;
   /* Adjust this value to match the width of the scrollbar in your browser */
 }
 .board::-webkit-scrollbar-track {
   background-color: #f2f2f2;
+  position: absolute;
   /* Adjust the background color as needed */
 }
 

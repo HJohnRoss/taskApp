@@ -7,11 +7,10 @@ const numToMonth = {
 }
 
 
-
 function TaskContainer(
     { day, tasks, currDate,
         fullDate, onClick, selectedTask, index,
-        setSelectedTask, setToggleItem }) {
+        setSelectedTask, setToggleItem, point }) {
 
     const [formData, setFormData] = useState({
         title: "",
@@ -94,7 +93,7 @@ function TaskContainer(
                                     {task.title}
                                 </div>
                                 {displayTaskInfoIndex == task.id &&
-                                    <div className='task-info' ref={formRef}>
+                                    <div className={`task-info ${point ? "to-right": "to-left"}`} ref={formRef}>
                                         <div className='icon-holder'>
                                             <div className='icon-holder__right'>
                                                 <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem()}></i>
@@ -123,7 +122,7 @@ function TaskContainer(
                 </div>
             </div>
             {selectedTask == index && (
-                <div className='calendar-board__table--row--data--container--forms'>
+                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"}`}>
                     <form ref={formRef} onSubmit={handleSubmit}>
                         <div className='calendar-board__table--row--data--container--forms--header'>
                             <i className="fa-solid fa-xmark" onClick={()=>setSelectedTask(null)}></i>
