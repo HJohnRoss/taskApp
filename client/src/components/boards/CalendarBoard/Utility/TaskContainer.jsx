@@ -47,7 +47,8 @@ function TaskContainer(
             .then(res => {
                 console.log(res)
                 setFormData({
-                    date: fullDate
+                    date: fullDate,
+                    boardIdd : id,
                 })
             })
             .catch(err => console.error(err))
@@ -67,8 +68,8 @@ function TaskContainer(
     const deleteTaskItem = (id) => {
         setDisplayTaskInfoIndex(null)
         TaskService.delete(id)
-        .then(res => console.log(res))
-        .catch(err => console.error(err))
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
         setUpdateBoard(!updateBoard)
     }
 
@@ -117,7 +118,7 @@ function TaskContainer(
                                     <div className={`task-info ${point ? "to-right" : "to-left"}`} ref={formRef}>
                                         <div className='icon-holder'>
                                             <div className='icon-holder__right'>
-                                                <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem()}></i>
+                                                <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem(task.id)}></i>
                                                 <i className="fa-solid fa-pen" onClick={() => editTaskItem(index, task)} ></i>
                                             </div>
                                             <i className="fa-solid fa-xmark" onClick={() => deleteTaskItem(task.id)}></i>
@@ -143,7 +144,7 @@ function TaskContainer(
                 </div>
             </div>
             {selectedTask == index && (
-                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"}`}>
+                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form": "to-up-form"}`}>
                     <form ref={formRef} onSubmit={handleSubmit}>
                         <div className='calendar-board__table--row--data--container--forms--header'>
                             <i className="fa-solid fa-xmark" onClick={() => setSelectedTask(null)}></i>

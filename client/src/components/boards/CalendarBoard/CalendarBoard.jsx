@@ -79,10 +79,12 @@ function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard }) {
         console.log(currDate.currMonth)
     };
 
+
+    
     return (
         <div className='calendar-board' onClick={handleClick}>
             <div className='calendar-board__title'>
-                <h1>Calendar Board</h1>
+                <h1>{board}</h1>
                 {currDate && <h2>{fullMonName[numToMonth[currDate.currMonth].toLowerCase()]}</h2>}
             </div>
             <table className='calendar-board__table'>

@@ -27,21 +27,25 @@
 }
 
 .to-right {
-    top: 1rem;
     left: 1rem;
 
     &-form {
-        top: 1rem;
         left: 10vw;
     }
 }
 
 .to-left {
-    top: 1rem;
     right: 1rem;
 
     &-form {
-        top: 1rem;
         right: 10vw;
     }
+}
+
+.to-up-form {
+    bottom: 1rem;
+}
+
+.to-down-form {
+    top: 1rem;
 }

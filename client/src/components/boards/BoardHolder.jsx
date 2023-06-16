@@ -14,8 +14,9 @@ function BoardHolder() {
   useEffect(() => {
     BoardService.getOne(id)
       .then(res => {
-        setBoard(res.data);
+        setBoard(res.data.boardName);
         setTasks(res.data.tasks);
+        console.log(res.data)
       })
       .catch(err => console.error(err));
   }, [id, updateBoard]);

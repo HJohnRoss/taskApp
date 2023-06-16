@@ -43,7 +43,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
             let position = 1
             let turningPoint = 0;
             let direction = true;
-            let switched = true
+
             for (let week = 0; week < 5; week++) {
                 let thisWeek = [];
                 for (let day = 0; day < 7; day++) {
@@ -57,7 +57,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
                     if (turningPoint == 7) {
                         turningPoint = 0
                     }
-
+                    
                     let dayTasks = [];
                     position++
                     if (days[j]) {
@@ -83,11 +83,19 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
                         if (remainder < 10) {
                             remainder = `0${remainder}`
                         }
+                        if (tasks) {
+                            for (let i of tasks) {
+                                if (i.date == `${currDate.currYear}-${thisMonth}-${remainder}`) {
+                                    dayTasks.push(i)
+                                }
+                            }
+                        }
                         thisWeek.push({
                             position: position,
                             day: numToMonth[thisMonth] + " " + remainder,
                             date: `${currDate.currYear}-${thisMonth}-${remainder}`,
                             point: direction,
+                            tasks: dayTasks
                         });
                         remainder++;
                     }
