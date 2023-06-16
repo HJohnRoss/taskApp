@@ -20,7 +20,7 @@ class TaskService {
     }
 
     create(data) {
-        return axiosInstance.post("/tasks/new")
+        return axiosInstance.post("/tasks/new", data)
     }
 
     delete(id) {

@@ -21,7 +21,7 @@ const numToMonth = {
     "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
 }
 
-function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
+function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdateBoard, updateBoard }) {
     const [daysOfTheMonth, setDaysOfTheMonth] = useState([]);
     const [todaysDate, setTodaysDate] = useState(`${Date().slice(11, 15)}-${monthToNum[Date().slice(4, 7)]}-${Date().slice(8, 10)}`)
 
@@ -99,7 +99,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
         };
 
         addTasks();
-    }, [tasks, currDate, toggleItem]);
+    }, [tasks, currDate, toggleItem, updateBoard]);
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
@@ -123,6 +123,8 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                                 setSelectedTask={setActiveTaskIndex}
                                 setToggleItem={setToggleItem}
                                 point={day.point}
+                                setUpdateBoard={setUpdateBoard}
+                                updateBoard={updateBoard}
                             />
                         </td>
                     ))}

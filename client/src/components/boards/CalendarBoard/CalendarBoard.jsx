@@ -51,7 +51,7 @@ const board = {
     ],
 }
 
-function CalendarBoard({ board, tasks }) {
+function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard }) {
 
     const [today, setToday] = useState()
 
@@ -74,7 +74,7 @@ function CalendarBoard({ board, tasks }) {
     const toggleDate = () => {
         setCurrDate((prevCurrDate) => ({
             ...prevCurrDate,
-            currMonth: prevCurrDate.currMonth ++
+            currMonth: prevCurrDate.currMonth++
         }));
         console.log(currDate.currMonth)
     };
@@ -83,7 +83,7 @@ function CalendarBoard({ board, tasks }) {
         <div className='calendar-board' onClick={handleClick}>
             <div className='calendar-board__title'>
                 <h1>Calendar Board</h1>
-                {currDate &&<h2>{fullMonName[numToMonth[currDate.currMonth].toLowerCase()]}</h2>}
+                {currDate && <h2>{fullMonName[numToMonth[currDate.currMonth].toLowerCase()]}</h2>}
             </div>
             <table className='calendar-board__table'>
                 <thead className='calendar-board__table--row'>
@@ -97,7 +97,15 @@ function CalendarBoard({ board, tasks }) {
                         <th className='calendar-board__table--row--head' >{weekDayToNum[today] + 6 > 7 ? numToWeekDay[weekDayToNum[today] + 6 - 7] : numToWeekDay[weekDayToNum[today] + 6]}</th>
                     </tr>
                 </thead>
-                <Month date={today} tasks={tasks} setActiveTaskIndex={setActiveTaskIndex} activeTaskIndex={activeTaskIndex} currDate={currDate} />
+                <Month
+                    date={today} 
+                    tasks={tasks} 
+                    setActiveTaskIndex={setActiveTaskIndex} 
+                    activeTaskIndex={activeTaskIndex} 
+                    currDate={currDate} 
+                    setUpdateBoard={setUpdateBoard}
+                    updateBoard={updateBoard}
+                    />
             </table>
         </div>
     )

@@ -9,6 +9,7 @@ function BoardHolder() {
 
   const [board, setBoard] = useState(null);
   const [tasks, setTasks] = useState(null);
+  const [updateBoard, setUpdateBoard] = useState(false)
 
   useEffect(() => {
     BoardService.getOne(id)
@@ -17,12 +18,12 @@ function BoardHolder() {
         setTasks(res.data.tasks);
       })
       .catch(err => console.error(err));
-  }, [id]);
+  }, [id, updateBoard]);
 
   return (
     <div className='board' style={{ paddingRight: !id ? "1rem" : "" }}>
       {
-        id ? <CalendarBoard board={board} tasks={tasks} /> :
+        id ? <CalendarBoard board={board} tasks={tasks} setUpdateBoard={setUpdateBoard} updateBoard={updateBoard} /> :
           <TaskBoard />
       }
     </div>
