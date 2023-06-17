@@ -16,17 +16,19 @@ function TaskContainer(
         setSelectedTask, setUpdateBoard, point, updateBoard }) {
 
     const {id} = useParams();
-
+    
+    const [formSubmit, setFormSubmit] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
         date: fullDate,
         description: "",
-        boardIdd : id
+        boardIdd : id,
+        isCompleted: false,
     })
-
-    const [formSubmit, setFormSubmit] = useState(false)
-
     const formRef = useRef(null);
+    const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
+    
+    
 
     const handleTaskClick = (e) => {
         e.stopPropagation();
@@ -49,6 +51,7 @@ function TaskContainer(
                 setFormData({
                     date: fullDate,
                     boardIdd : id,
+                    
                 })
             })
             .catch(err => console.error(err))
@@ -63,7 +66,6 @@ function TaskContainer(
         setFormSubmit(!formSubmit)
     }
 
-    const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
 
     const deleteTaskItem = (id) => {
         setDisplayTaskInfoIndex(null)
