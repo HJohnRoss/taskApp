@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
 
 class TaskService {
 
-
     getAll() {
         return axiosInstance.get("/tasks/all")
     }

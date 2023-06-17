@@ -64,7 +64,16 @@
   display: flex;
 }
 
-.fa-angle-down, .fa-angle-right {
+.fa-angle-down, .fa-angle-right, .fa-angle-left {
+  cursor: pointer;
+}
+
+.fa-arrow-turn-down {
+  color: #696969;
+  border-radius: 5px;
+}
+.fa-arrow-turn-down:hover, .fa-arrow-turn-down:active {
+  background-color: #c5c7d0;
   cursor: pointer;
 }
 
@@ -235,6 +244,38 @@
 }
 .query-selection-box__item a:visited {
   color: inherit;
+}
+
+.calendarNav {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid #696969;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.change-date {
+  box-shadow: 1rem 1rem 2rem rgba(167, 167, 167, 0.598);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 1vw;
+  border-radius: 1rem;
+  background-color: white;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+.change-date__arrows > i:hover {
+  background-color: #c5c7d0;
+}
+
+.form-select {
+  width: fit-content;
 }
 
 .topNav {
