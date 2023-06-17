@@ -76,7 +76,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
                             point: direction,
                         });
                     } else {
-                        let thisMonth = parseInt(currDate.currMonth) + 1
+                        let thisMonth = parseInt(currDate.currMonth) + 1 > 12 ? 1 : parseInt(currDate.currMonth) + 1
                         if (parseInt(thisMonth) < 10) {
                             thisMonth = `0${thisMonth}`
                         }

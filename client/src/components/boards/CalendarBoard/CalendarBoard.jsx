@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 import Month from './Utility/Month';
+import CalendarNav from './Utility/CalendarNav';
 
 const monthDays = {
     "jan": 31, "feb": 28, "mar": 31, "apr": 30, "may": 31, "jun": 30, "jul": 31, "aug": 31, "sep": 30, "oct": 31, "nov": 30, "dec": 31,
@@ -51,7 +52,7 @@ const board = {
     ],
 }
 
-function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard }) {
+function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard, setTasks }) {
 
     const [today, setToday] = useState()
 
@@ -79,12 +80,12 @@ function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard }) {
         console.log(currDate.currMonth)
     };
 
-
-    
     return (
         <div className='calendar-board' onClick={handleClick}>
+            <CalendarNav currDate={currDate} setCurrDate={setCurrDate} setTasks={setTasks} tasks={tasks}/>
             <div className='calendar-board__title'>
                 <h1>{board}</h1>
+                {/* {currDate.currYear} */}
                 {currDate && <h2>{fullMonName[numToMonth[currDate.currMonth].toLowerCase()]}</h2>}
             </div>
             <table className='calendar-board__table'>
@@ -100,14 +101,14 @@ function CalendarBoard({ board, tasks, updateBoard, setUpdateBoard }) {
                     </tr>
                 </thead>
                 <Month
-                    date={today} 
-                    tasks={tasks} 
-                    setActiveTaskIndex={setActiveTaskIndex} 
-                    activeTaskIndex={activeTaskIndex} 
-                    currDate={currDate} 
+                    date={today}
+                    tasks={tasks}
+                    setActiveTaskIndex={setActiveTaskIndex}
+                    activeTaskIndex={activeTaskIndex}
+                    currDate={currDate}
                     setUpdateBoard={setUpdateBoard}
                     updateBoard={updateBoard}
-                    />
+                />
             </table>
         </div>
     )
