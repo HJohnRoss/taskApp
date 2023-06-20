@@ -21,7 +21,7 @@ const numToMonth = {
     "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
 }
 
-function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
+function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdateBoard, updateBoard }) {
     const [daysOfTheMonth, setDaysOfTheMonth] = useState([]);
     const [todaysDate, setTodaysDate] = useState(`${Date().slice(11, 15)}-${monthToNum[Date().slice(4, 7)]}-${Date().slice(8, 10)}`)
 
@@ -41,9 +41,23 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
             let remainder = 1;
 
             let position = 1
+            let turningPoint = 0;
+            let direction = true;
+
             for (let week = 0; week < 5; week++) {
                 let thisWeek = [];
                 for (let day = 0; day < 7; day++) {
+                    if (turningPoint < 2) {
+                        direction = true
+                    } else if (turningPoint > 2) {
+                        direction = false
+                    }
+                    turningPoint++
+
+                    if (turningPoint == 7) {
+                        turningPoint = 0
+                    }
+                    
                     let dayTasks = [];
                     position++
                     if (days[j]) {
@@ -57,21 +71,31 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                         thisWeek.push({
                             position: position,
                             tasks: dayTasks,
-                            day: days[j] < 10 ? `0${days[j]}`: days[j],
-                            date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`
+                            day: days[j] < 10 ? `0${days[j]}` : days[j],
+                            date: `${currDate.currYear}-${currDate.currMonth}-${days[j] < 10 ? `0${days[j]}` : days[j]}`,
+                            point: direction,
                         });
                     } else {
-                        let thisMonth = parseInt(currDate.currMonth) + 1
+                        let thisMonth = parseInt(currDate.currMonth) + 1 > 12 ? 1 : parseInt(currDate.currMonth) + 1
                         if (parseInt(thisMonth) < 10) {
                             thisMonth = `0${thisMonth}`
                         }
                         if (remainder < 10) {
                             remainder = `0${remainder}`
                         }
+                        if (tasks) {
+                            for (let i of tasks) {
+                                if (i.date == `${currDate.currYear}-${thisMonth}-${remainder}`) {
+                                    dayTasks.push(i)
+                                }
+                            }
+                        }
                         thisWeek.push({
                             position: position,
-                            day: numToMonth[thisMonth] +  " "  + remainder,
-                            date: `${currDate.currYear}-${thisMonth}-${remainder}`
+                            day: numToMonth[thisMonth] + " " + remainder,
+                            date: `${currDate.currYear}-${thisMonth}-${remainder}`,
+                            point: direction,
+                            tasks: dayTasks
                         });
                         remainder++;
                     }
@@ -83,7 +107,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
         };
 
         addTasks();
-    }, [tasks, currDate, toggleItem]);
+    }, [tasks, currDate, toggleItem, updateBoard]);
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
@@ -106,6 +130,9 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate }) {
                                 index={day.position}
                                 setSelectedTask={setActiveTaskIndex}
                                 setToggleItem={setToggleItem}
+                                point={day.point}
+                                setUpdateBoard={setUpdateBoard}
+                                updateBoard={updateBoard}
                             />
                         </td>
                     ))}
