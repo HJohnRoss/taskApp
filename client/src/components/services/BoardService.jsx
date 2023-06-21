@@ -23,7 +23,7 @@ class BoardService {
   }
 
   create(data) {
-    return axiosInstance.post("/boards/new", data)
+    return axiosInstance.post("/boards/new")
   }
 
   // NOT MADE YET:

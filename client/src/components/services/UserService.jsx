@@ -15,7 +15,7 @@ class UserService {
   }
 
   login(data) {
-    return axiosInstance.post("/login", data)
+    return axiosInstance.get("/login", data)
   }
 
   // NOT MADE YET:

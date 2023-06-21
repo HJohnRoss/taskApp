@@ -27,10 +27,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_name")
     @NotEmpty(message = "first name is required!")
     @Size(min = 3, max = 30, message = "first name must be between 3 and 30 characters")
-    private String userName;
+    private String user_name;
 
     @NotEmpty(message = "Email is required!")
     @Email(message = "Please enter a valid email!")
@@ -56,7 +55,7 @@ public class User {
             List<Board> boards) {
         this.id = id;
         this.email = email;
-        this.userName = userName;
+        this.user_name = userName;
         this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -81,15 +80,13 @@ public class User {
         this.id = id;
     }
 
-
-    public String getUserName() {
-        return this.userName;
+    public String getUser_name() {
+        return this.user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
-
 
     public String getEmail() {
         return this.email;

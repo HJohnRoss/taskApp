@@ -10,17 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tasks")
@@ -30,12 +22,10 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3)
     public String title;
 
     public String date;
 
-    @Size(min = 3)
     public String description;
 
     public Boolean isCompleted;
@@ -46,18 +36,15 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
-
-    private Long boardIdd;
 
     public Task() {
     }
 
     public Task(Long id, String title, String date, String description, Date createdAt,
-            Date updatedAt, Board board, Boolean isCompleted, Long boardIdd) {
+            Date updatedAt, Board board, Boolean isCompleted) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -66,17 +53,6 @@ public class Task {
         this.updatedAt = updatedAt;
         this.board = board;
         this.isCompleted = isCompleted;
-        this.boardIdd = boardIdd;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = new Date();
     }
 
     public Long getId() {
@@ -138,23 +114,5 @@ public class Task {
     public void setIsCompleted(Boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
-
-    public Board getBoard() {
-        return this.board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
-
-    public Long getBoardIdd() {
-        return this.boardIdd;
-    }
-
-    public void setBoardIdd(Long boardIdd) {
-        this.boardIdd = boardIdd;
-    }
-
 
 }

@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.example.TaskAppServer.models.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long>{
+public interface UserRepository  extends CrudRepository<User, Long>{
 
-    Optional<User> findByUserName(String userName);
     Optional<User> findByEmail(String email);
     List<User> findAll();
 }

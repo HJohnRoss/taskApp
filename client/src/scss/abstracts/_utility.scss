@@ -25,27 +25,3 @@
     }
 
 }
-
-.to-right {
-    left: 1rem;
-
-    &-form {
-        left: 10vw;
-    }
-}
-
-.to-left {
-    right: 1rem;
-
-    &-form {
-        right: 10vw;
-    }
-}
-
-.to-up-form {
-    bottom: 1rem;
-}
-
-.to-down-form {
-    top: 1rem;
-}
