@@ -1,21 +1,66 @@
-import TopNav from "../../components/navbars/TopNav"
-import { useState, useEffect } from "react"
+import TopNav from "../../components/navbars/TopNav";
+import { useState, useEffect } from "react";
+import UserService from "../../components/services/UserService";
+
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    userName: "",
+    password: "",
+  })
 
-  const [submit, setSubmit] = useState(false);
+  const [errors, setErrors] = useState({});
+
+
+  const validateForm = () => {
+    let errors = {};
+
+    // if (!email) {
+    //   errors.email = 'Email is required';
+    // } else if (!/\S+@\S+\.\S+/.test(email)) {
+    //   errors.email = 'Invalid email format';
+    // }
+    if (!userData.userName) {
+      errors.userName = 'User Name must be not be Empty'
+    } else if (userData.userName.length < 3) {
+      errors.userName = 'User Name must be at least 3 characters'
+    }
+
+    if (!userData.password) {
+      errors.password = 'password is required';
+    } else if (userData.password.length < 5) {
+      errors.password = 'password must be at least 6 characters long';
+    }
+
+    setErrors(errors)
+
+    return errors
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const res = await UserService.login(userData)
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value
+    })
+  }
 
   useEffect(() => {
-    if (password.length < 8) {
-      setSubmit(false)
-    } else if (userName.length < 3) {
-      setSubmit(false)
-    } else {
-      setSubmit(true)
-    }
-  }, [password, userName])
+    validateForm()
+  }, [userData.password, userData.userName])
 
   return (
     <div className="center">
@@ -30,16 +75,16 @@ const Login = () => {
 
           </div>
 
-          <form className="login__container--form" action="" method="post">
+          <form className="login__container--form" onSubmit={handleSubmit}>
             <h2 className="login__container--form--header">Login</h2>
             <label className="login__container--form--label" htmlFor="userName">User Name:</label>
-            <input type="text" className="login__container--form--input" onChange={e => setUserName(e.target.value)} value={userName} />
+            <input name="userName" type="text" className="login__container--form--input" onChange={handleChange} value={userData.userName} />
 
             <label className="login__container--form--label" htmlFor="password">Password:</label>
-            <input type="password" className="login__container--form--input" onChange={e => setPassword(e.target.value)} value={password} />
+            <input name="password" type="password" className="login__container--form--input" onChange={handleChange} value={userData.password} />
 
             {
-              submit ?
+              Object.keys(errors).length === 0 ?
                 <button className="login__container--form--btn">Login</button>
                 :
                 <button className="login__container--form--btn--disabled" disabled>Login</button>

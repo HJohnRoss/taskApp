@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BoardService from '../../../services/BoardService';
+import TaskService from '../../../services/TaskService';
+import { useParams } from 'react-router-dom';
 
 
 const numToMonth = {
@@ -11,18 +13,23 @@ const numToMonth = {
 function TaskContainer(
     { day, tasks, currDate,
         fullDate, onClick, selectedTask, index,
-        setSelectedTask, setToggleItem }) {
+        setSelectedTask, setUpdateBoard, point, updateBoard }) {
 
+    const { id } = useParams();
+    const [date, setDate] = useState(fullDate)
+    const [formSubmit, setFormSubmit] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
         date: fullDate,
-        description: ""
+        description: "",
+        boardIdd: id,
+        isCompleted: false,
     })
-
     const formRef = useRef(null);
+    const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
 
     const handleTaskClick = (e) => {
-        e.stopPropagation();
+        e.stopPropagation(); 
         // setFormDate(prev => !prev)
         console.log(fullDate)
     }
@@ -37,20 +44,37 @@ function TaskContainer(
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        console.log(formData.date)
+        // TaskService.create(formData)
+        //     .then(res => {
+        //         // console.log(res)
+        //         console.log(res.data)
+        //         setFormData({
+        //             boardIdd: id,
+        //         }) 
+        //         console.log(formData)
+        //     })
+        //     .catch(err => console.error(err))
         setSelectedTask(null)
+        setUpdateBoard(!updateBoard)
     }
 
 
     const displayTaskInfo = (index, task) => {
         setDisplayTaskInfoIndex(index)
         setSelectedTask(task)
+        setFormSubmit(!formSubmit)
     }
 
-    const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
 
-    const deleteTaskItem = () => {
+    const deleteTaskItem = (id) => {
         setDisplayTaskInfoIndex(null)
+        TaskService.delete(id)
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
+        setUpdateBoard(prev => (
+            !prev
+        ))
     }
 
     const editTaskItem = (index, task) => {
@@ -62,6 +86,7 @@ function TaskContainer(
             date: fullDate,
             description: task.description
         })
+        setUpdateBoard(!updateBoard)
     }
 
     useEffect(() => {
@@ -84,29 +109,31 @@ function TaskContainer(
         <div className='calendar-board__table--row--data--container' onClick={handleTaskClick}>
             <div className='calendar-board__table--row--data--container--date'>
                 {day}
+                {/* <br />
+                {fullDate} */}
             </div>
             <div className='task-container'>
                 <div className='task-container__tasks' >
                     {tasks &&
                         tasks.map((task, i) => (
                             <div key={task.id} className='task-container__tasks--holder'>
-                                <div  className='task-container__tasks--item' onClick={() => displayTaskInfo(task.id, task)}>
+                                <div className='task-container__tasks--item' onClick={() => displayTaskInfo(task.id, task)}>
                                     {task.title}
                                 </div>
                                 {displayTaskInfoIndex == task.id &&
-                                    <div className='task-info' ref={formRef}>
+                                    <div className={`task-info ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form" : "to-up-form"}`} ref={formRef}>
                                         <div className='icon-holder'>
                                             <div className='icon-holder__right'>
-                                                <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem()}></i>
+                                                <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem(task.id)}></i>
                                                 <i className="fa-solid fa-pen" onClick={() => editTaskItem(index, task)} ></i>
                                             </div>
-                                            <i className="fa-solid fa-xmark" onClick={() => setDisplayTaskInfoIndex(null)}></i>
+                                            <i className="fa-solid fa-xmark" onClick={() => deleteTaskItem(task.id)}></i>
                                         </div>
                                         <div className='task-info--container'>
                                             <h4 className='task-info--container--header'>{task.title}</h4>
                                             <div className='task-info--container--info'>
                                                 <i className="fa-regular fa-clock"></i>
-                                                <p>{`${numToMonth[fullDate.slice(5,7)]} ${fullDate.slice(-2)} ${fullDate.slice(0,4)} `}</p>
+                                                <p>{`${numToMonth[fullDate.slice(5, 7)]} ${fullDate.slice(-2)} ${fullDate.slice(0, 4)} `}</p>
                                             </div>
                                             <div className='task-info--container--info'>
                                                 <i className="fa-regular fa-note-sticky"></i>
@@ -123,10 +150,10 @@ function TaskContainer(
                 </div>
             </div>
             {selectedTask == index && (
-                <div className='calendar-board__table--row--data--container--forms'>
+                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form" : "to-up-form"}`}>
                     <form ref={formRef} onSubmit={handleSubmit}>
                         <div className='calendar-board__table--row--data--container--forms--header'>
-                            <i className="fa-solid fa-xmark" onClick={()=>setSelectedTask(null)}></i>
+                            <i className="fa-solid fa-xmark" onClick={() => setSelectedTask(null)}></i>
                         </div>
                         <div className='form-group'>
                             <input className='form-group--item form-group--item--title' type='text' name='title' placeholder='Add title and time' value={formData.title} onChange={(e) => handleFormChange(e)} />
@@ -143,7 +170,6 @@ function TaskContainer(
                     </form>
                 </div>
             )}
-            { }
         </div>
     );
 }
