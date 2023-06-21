@@ -22,16 +22,6 @@
 }
 
 
-.fa-angle-down, .fa-angle-right, .fa-angle-left {
+.fa-angle-down, .fa-angle-right {
     cursor: pointer;
-}
-
-.fa-arrow-turn-down {
-    color: $color-grey-dark;
-    border-radius: 5px;
-
-    &:hover,&:active {
-        background-color: #c5c7d0;
-        cursor: pointer;
-    }
 }

@@ -101,10 +101,10 @@ const TopNav = () => {
       </div>
       <div className="topNav__right">
         <ul className="topNav__right--list">
-          <li className="search" ref={searchRef} onClick={toggleSearch}>
-            <i className="fa-solid fa-magnifying-glass search--icon"></i>
+          <li className="topNav__right--list-search" ref={searchRef} onClick={toggleSearch}>
+            <i className="fa-solid fa-magnifying-glass topNav__right--list-search--icon"></i>
             <input
-              className="search--input"
+              className="topNav__right--list-search--input"
               placeholder="Search Boards"
               value={query}
               onChange={(e) => handleChange(e)}
@@ -123,7 +123,7 @@ const TopNav = () => {
                         queryBoard(item);
                       }}
                     >
-                      <i className="fa-solid fa-magnifying-glass search--icon"></i>
+                      <i className="fa-solid fa-magnifying-glass topNav__right--list-search--icon"></i>
                       <span>{item.boardName}</span>
                     </div>
                   </Link>

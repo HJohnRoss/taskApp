@@ -6,20 +6,20 @@ const board = {
     tasks: [
         {
             Title: "Do this",
+            Date: "7/28/2023",
             Status: "Done",
-            "Due Date": "7/28/2023",
             Description: "Doing something",
         },
         {
             Title: "Do this",
+            Date: "7/28/2023",
             Status: "Working on",
-            "Due Date": "7/28/2023",
             Description: "Doing something",
         },
         {
             Title: "Do this",
+            Date: "7/28/2023",
             Status: "Stuck",
-            "Due Date": "7/28/2023",
             Description: "Doing something",
         },
     ],

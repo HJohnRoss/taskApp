@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.TaskAppServer.models.Board;
 import com.example.TaskAppServer.models.Task;
 import com.example.TaskAppServer.services.BoardService;
 import com.example.TaskAppServer.services.TaskService;
@@ -49,14 +48,12 @@ public class TaskController {
 
     // Create new Task
     @PostMapping("/api/tasks/new")
-    public Task createTasks(@RequestBody Task task, BindingResult result) {
-        Board board = boardService.getOneBoard(task.getBoardIdd());
-        task.setBoard(board);
-        return taskService.createTask(task);
+    public Task createTasks(@RequestBody Task Task, BindingResult result) {
+        return taskService.createTask(Task);
     }
 
     // Delete Task
-    @DeleteMapping("/api/tasks/{id}")
+    @DeleteMapping("/api/tasks/delete/{id}")
     public void deleteTask(@PathVariable("id") Long id) {
         taskService.deleteTask(id);
     }
