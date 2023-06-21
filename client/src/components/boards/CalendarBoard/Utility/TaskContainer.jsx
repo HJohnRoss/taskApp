@@ -15,23 +15,21 @@ function TaskContainer(
         fullDate, onClick, selectedTask, index,
         setSelectedTask, setUpdateBoard, point, updateBoard }) {
 
-    const {id} = useParams();
-    
+    const { id } = useParams();
+    const [date, setDate] = useState(fullDate)
     const [formSubmit, setFormSubmit] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
         date: fullDate,
         description: "",
-        boardIdd : id,
+        boardIdd: id,
         isCompleted: false,
     })
     const formRef = useRef(null);
     const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
-    
-    
 
     const handleTaskClick = (e) => {
-        e.stopPropagation();
+        e.stopPropagation(); 
         // setFormDate(prev => !prev)
         console.log(fullDate)
     }
@@ -45,16 +43,18 @@ function TaskContainer(
     }
 
     const handleSubmit = (e) => {
-        TaskService.create(formData)
-            .then(res => {
-                console.log(res)
-                setFormData({
-                    date: fullDate,
-                    boardIdd : id,
-                    
-                })
-            })
-            .catch(err => console.error(err))
+        e.preventDefault()
+        console.log(formData.date)
+        // TaskService.create(formData)
+        //     .then(res => {
+        //         // console.log(res)
+        //         console.log(res.data)
+        //         setFormData({
+        //             boardIdd: id,
+        //         }) 
+        //         console.log(formData)
+        //     })
+        //     .catch(err => console.error(err))
         setSelectedTask(null)
         setUpdateBoard(!updateBoard)
     }
@@ -72,7 +72,9 @@ function TaskContainer(
         TaskService.delete(id)
             .then(res => console.log(res))
             .catch(err => console.error(err))
-        setUpdateBoard(!updateBoard)
+        setUpdateBoard(prev => (
+            !prev
+        ))
     }
 
     const editTaskItem = (index, task) => {
@@ -107,6 +109,8 @@ function TaskContainer(
         <div className='calendar-board__table--row--data--container' onClick={handleTaskClick}>
             <div className='calendar-board__table--row--data--container--date'>
                 {day}
+                {/* <br />
+                {fullDate} */}
             </div>
             <div className='task-container'>
                 <div className='task-container__tasks' >
@@ -117,7 +121,7 @@ function TaskContainer(
                                     {task.title}
                                 </div>
                                 {displayTaskInfoIndex == task.id &&
-                                    <div className={`task-info ${point ? "to-right" : "to-left"}`} ref={formRef}>
+                                    <div className={`task-info ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form" : "to-up-form"}`} ref={formRef}>
                                         <div className='icon-holder'>
                                             <div className='icon-holder__right'>
                                                 <i className="fa-solid fa-trash-can" onClick={() => deleteTaskItem(task.id)}></i>
@@ -146,7 +150,7 @@ function TaskContainer(
                 </div>
             </div>
             {selectedTask == index && (
-                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form": "to-up-form"}`}>
+                <div className={`calendar-board__table--row--data--container--forms ${point ? "to-right-form" : "to-left-form"} ${index < 16 ? "to-down-form" : "to-up-form"}`}>
                     <form ref={formRef} onSubmit={handleSubmit}>
                         <div className='calendar-board__table--row--data--container--forms--header'>
                             <i className="fa-solid fa-xmark" onClick={() => setSelectedTask(null)}></i>
@@ -166,7 +170,6 @@ function TaskContainer(
                     </form>
                 </div>
             )}
-            { }
         </div>
     );
 }

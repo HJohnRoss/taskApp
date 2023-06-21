@@ -107,7 +107,7 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
         };
 
         addTasks();
-    }, [tasks, currDate, toggleItem, updateBoard]);
+    }, [tasks, currDate, toggleItem, updateBoard, activeTaskIndex]);
 
     const handleTaskClick = (index) => {
         setActiveTaskIndex(index);
