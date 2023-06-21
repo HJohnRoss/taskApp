@@ -31,7 +31,7 @@ function TaskBoardTable() {
     const [selectAllTasks, setSelectAllTasks] = useState(false)
     const [boardState, setBoardState] = useState(true)
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         setSelectAllTasks(!selectAllTasks)
     }
 
@@ -46,7 +46,7 @@ function TaskBoardTable() {
                     boardState ?
                         <i className={`fa-solid fa-angle-down`} onClick={switchBoardState}></i>
                         :
-                        <i className="fa-solid fa-angle-right" onClick={switchBoardState}></i>
+                        <i class="fa-solid fa-angle-right" onClick={switchBoardState}></i>
                 }
                 <div>
                     <h3 className='task-board__title'>{board.title}</h3>
@@ -60,7 +60,7 @@ function TaskBoardTable() {
             <table className='table task-board__table'>
                 <thead>
                     <tr className='task-board__table--row'>
-                        <th className='task-board__table--row--header'><input className='form-check-input' type="checkbox" checked={selectAllTasks} onChange={() => handleClick()} /></th>
+                        <th className='task-board__table--row--header'><input className='form-check-input' type="checkbox" checked={selectAllTasks} onChange={(e) => handleClick(e)} /></th>
                         {Object.keys(board.tasks[0]).map((task, i) => (
                             <th key={i} className='task-board__table--row--header'>{task}</th>
                         ))}
