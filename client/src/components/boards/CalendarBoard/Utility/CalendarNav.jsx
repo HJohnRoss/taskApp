@@ -51,7 +51,7 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
         <div className='calendarNav'>
             <div>{currDate.currMonth}</div>
             <SearchBar setTasks={setTasks} tasks={tasks} />
-            <i style={{ backgroundColor: `${!navState ? "#dff0ff" : ""}`, transform: `${!navState ? "scale(0.95)" : ""}` }} class="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
+            <i style={{ backgroundColor: `${!navState ? "#dff0ff" : ""}`, transform: `${!navState ? "scale(0.95)" : ""}` }} className="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
             {navState &&
                 <div className='change-date '>
                     <button onClick={resetDate} className='btn btn-dark btn-sm'>Today</button>

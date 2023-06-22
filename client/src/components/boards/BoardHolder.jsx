@@ -9,7 +9,7 @@ function BoardHolder() {
 
   const [board, setBoard] = useState(null);
   const [tasks, setTasks] = useState(null);
-  const [updateBoard, setUpdateBoard] = useState(false)
+  const [updateBoard, setUpdateBoard] = useState(0)
 
   useEffect(() => {
     BoardService.getOne(id)
