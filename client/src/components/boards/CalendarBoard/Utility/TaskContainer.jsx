@@ -45,18 +45,18 @@ function TaskContainer(
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formData.date)
-        // TaskService.create(formData)
-        //     .then(res => {
-        //         // console.log(res)
-        //         console.log(res.data)
-        //         setFormData({
-        //             boardIdd: id,
-        //         }) 
-        //         console.log(formData)
-        //     })
-        //     .catch(err => console.error(err))
+        TaskService.create(formData)
+            .then(res => {
+                // console.log(res)
+                console.log(res.data)
+                setFormData({
+                    boardIdd: id,
+                }) 
+                console.log(formData)
+            })
+            .catch(err => console.error(err))
         setSelectedTask(null)
-        setUpdateBoard(!updateBoard)
+        setUpdateBoard(updateBoard+1)
     }
 
 
@@ -72,9 +72,7 @@ function TaskContainer(
         TaskService.delete(id)
             .then(res => console.log(res))
             .catch(err => console.error(err))
-        setUpdateBoard(prev => (
-            !prev
-        ))
+        setUpdateBoard(updateBoard+1)
     }
 
     const editTaskItem = (index, task) => {
@@ -86,7 +84,7 @@ function TaskContainer(
             date: fullDate,
             description: task.description
         })
-        setUpdateBoard(!updateBoard)
+        setUpdateBoard(updateBoard + 1)
     }
 
     useEffect(() => {
@@ -102,6 +100,7 @@ function TaskContainer(
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            
         };
     }, [displayTaskInfoIndex]);
 
@@ -159,7 +158,7 @@ function TaskContainer(
                             <input className='form-group--item form-group--item--title' type='text' name='title' placeholder='Add title and time' value={formData.title} onChange={(e) => handleFormChange(e)} />
                         </div>
                         <div className='form-group'>
-                            <input className='form-group--item' type='date' name='date' value={formData.date} onChange={(e) => handleFormChange(e)} />
+                            <input className='form-group--item' type='date' name='date'  value={fullDate} onChange={(e) => handleFormChange(e)} />
                         </div>
                         <div className='form-group'>
                             <textarea className='form-group--item form-group--item--description' placeholder='Add description' name='description' value={formData.description} onChange={(e) => handleFormChange(e)} />
