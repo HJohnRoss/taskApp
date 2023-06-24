@@ -1,24 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import BoardService from "../services/BoardService";
+import ProfileMenu from "../utility/ProfileMenu";
 
 const navProps = [
   {
     title: "Home",
-    link: "",
+    link: "home",
   },
   {
     title: "About",
-    link: "",
+    link: "home",
   },
-  {
-    title: "Login",
-    link: "login"
-  },
-  {
-    title: "Register",
-    link: "register"
-  }
+  // {
+  //   title: "Login",
+  //   link: "login"
+  // },
+  // {
+  //   title: "Register",
+  //   link: "register"
+  // }
 ];
 
 const TopNav = () => {
@@ -137,9 +138,7 @@ const TopNav = () => {
             )}
           </li>
           <li>
-            <Link to={"/"} className="topNav__right--list-link">
-              Profile
-            </Link>
+            <ProfileMenu />
           </li>
         </ul>
       </div>

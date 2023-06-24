@@ -2,6 +2,7 @@ import TopNav from "../../components/navbars/TopNav";
 import { useState, useEffect } from "react";
 import UserService from "../../components/services/UserService";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -55,7 +56,7 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0) {
       try {
         const res = await UserService.createRegister(userData);
-        if (res.status == 200){
+        if (res.status == 200) {
           setCookie("userId", res.data.id)
           // window.location.href = '/';
         }
@@ -94,27 +95,37 @@ const Register = () => {
 
           <form className="login__container--form" onSubmit={handleSubmit}>
             <h2 className="login__container--form--header">Register</h2>
-            {errors.badResponse && 
+            {errors.badResponse &&
               <h6 className="text-danger">{errors.badResponse}</h6>
             }
-            <label className="login__container--form--label" htmlFor="userName">User Name:</label>
-            <input name="userName" type="text" className="login__container--form--input" onChange={handleChange} value={userName} />
+            <div className="form-control">
+              <label className="login__container--form--label" htmlFor="userName">User Name</label>
+              <input name="userName" type="text" className="login__container--form--input" onChange={handleChange} value={userName} />
+            </div>
+            <div className="form-control">
 
-            <label className="login__container--form--label" htmlFor="email">Email:</label>
-            <input name="email" type="text" className="login__container--form--input" onChange={handleChange} value={email} />
+              <label className="login__container--form--label" htmlFor="email">Email</label>
+              <input name="email" type="text" className="login__container--form--input" onChange={handleChange} value={email} />
+            </div>
 
-            <label className="login__container--form--label" htmlFor="password">Password:</label>
-            <input name="password" type="password" className="login__container--form--input" onChange={handleChange} value={password} />
+            <div className="form-control">
+              <label className="login__container--form--label" htmlFor="password">Password</label>
+              <input name="password" type="password" className="login__container--form--input" onChange={handleChange} value={password} />
+            </div>
 
-            <label className="login__container--form--label" htmlFor="confirm">Confirm Password:</label>
-            <input name="confirmed" type="text" className="login__container--form--input" onChange={handleChange} value={confirmed} />
+            <div className="form-control">
+              <label className="login__container--form--label" htmlFor="confirm">Confirm Password</label>
+              <input name="confirmed" type="text" className="login__container--form--input" onChange={handleChange} value={confirmed} />
+            </div>
             {
               Object.keys(errors).length === 0 ?
                 <button className="login__container--form--btn">Login</button>
                 :
                 <button className="login__container--form--btn--disabled" disabled>Login</button>
             }
-            
+            <Link className="existing-account" to={"/"}>
+              Already have account?
+            </Link>
           </form>
         </div>
       </section>

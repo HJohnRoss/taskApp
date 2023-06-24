@@ -77,6 +77,14 @@
   cursor: pointer;
 }
 
+.userNav {
+  border: 1px solid white;
+  background-color: white;
+}
+.userNav:hover {
+  background-color: antiquewhite;
+}
+
 *,
 *::after,
 *::before {
@@ -137,54 +145,83 @@
 .login__container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: calc(100vh - 3.6rem);
+  padding-top: 20vh;
 }
 .login__container--form {
+  height: fit-content;
   border: 2px solid #696969;
-  border-radius: 1rem;
-  padding: 2rem;
+  border-radius: 0.5rem;
+  padding: 5rem 2rem;
 }
 .login__container--form--header {
   color: #252A34;
   font-size: 2.6rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 .login__container--form--label {
   color: #252A34;
   display: block;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .login__container--form--input {
   display: block;
   border: 0.1rem solid #252A34;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   height: 2rem;
   width: 20rem;
   padding: 0.5rem;
   margin-bottom: 0.7rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 .login__container--form--btn {
+  margin-top: 1rem;
   border: 0.1rem solid #D3D3D3;
-  background-color: rgb(162, 197, 253);
-  border-radius: 4rem;
+  background-color: #0073ea;
+  border-radius: 0.25rem;
   padding: 0.5rem 1.5rem;
+  width: 100%;
   transition: 0.3s all;
-  font-size: 0.75rem;
+  font-size: 1rem;
+  color: white;
 }
 .login__container--form--btn:hover {
-  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(37, 42, 52, 0.1);
-  margin-top: -0.2rem;
-  margin-bottom: 0.2rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(162, 197, 253, 0.1);
+  background-color: #288bf5;
 }
 .login__container--form--btn--disabled {
+  margin-top: 1rem;
   border: 0.1rem solid #D3D3D3;
   background-color: #D3D3D3;
-  border-radius: 4rem;
+  border-radius: 0.25rem;
+  width: 100%;
   padding: 0.5rem 1.5rem;
   transition: 0.3s all;
   font-size: 0.75rem;
+}
+
+.forgot-password {
+  display: flex;
+  text-decoration: none;
+  padding: 0.5rem 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  width: fit-content;
+  margin-left: auto;
+  border-radius: 0.25rem;
+}
+.forgot-password:hover {
+  background-color: rgb(244, 246, 253);
+}
+
+.form-control {
+  border: none;
+}
+
+.existing-account, .no-account {
+  display: block;
+  padding: 1rem 0.25rem 0;
+  font-size: 0.9rem;
 }
 
 .search {
@@ -196,6 +233,7 @@
   width: 15rem;
   transition: all 0.1s;
   max-height: 100%;
+  white-space: nowrap;
 }
 .search:visited {
   all: unset;
@@ -278,6 +316,61 @@
   width: fit-content;
 }
 
+.profileHolder {
+  margin-left: 1.5vw;
+  position: relative;
+}
+
+.profileMenu {
+  margin-top: 1.4vh;
+  border-radius: 0.4rem;
+  position: absolute;
+  width: 25vw;
+  min-width: 20rem;
+  right: 0;
+  background-color: #24262f;
+}
+.profileMenu__header {
+  padding: 1rem;
+  border-bottom: 1px solid #EAEAEA;
+  font-weight: lighter;
+}
+
+.profileContent {
+  padding: 1rem;
+  display: flex;
+  height: fit-content;
+}
+.profileContent__cell {
+  width: 50%;
+}
+.profileContent__cell-header {
+  margin-left: 0.5rem;
+  color: #9699a6;
+  margin-bottom: 1rem;
+}
+.profileContent__cell--item {
+  width: 100%;
+}
+.profileContent__cell--link > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.profileContent__cell--link > div:hover {
+  background-color: rgba(54, 71, 101, 0.438);
+}
+.profileContent__cell--link > div > i {
+  font-size: 1rem;
+}
+.profileContent__cell--link > div > div {
+  font-size: 1rem;
+  color: #EAEAEA;
+  text-decoration: none;
+}
+
 .topNav {
   display: flex;
   justify-content: space-between;
@@ -313,7 +406,7 @@
   color: #FF2E63;
 }
 .topNav__left {
-  width: 50%;
+  width: 20%;
 }
 .topNav__left--list {
   padding-left: 0;
