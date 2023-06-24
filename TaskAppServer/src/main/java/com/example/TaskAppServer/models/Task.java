@@ -30,12 +30,10 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3)
     public String title;
 
     public String date;
 
-    @Size(min = 3)
     public String description;
 
     public Boolean isCompleted;

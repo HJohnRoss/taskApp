@@ -55,7 +55,7 @@
                         border-radius: 1rem;
                         border: 2px solid white;
                         z-index: 100;
-                        animation: moveInLeft .4s ease-out ;
+                        animation: moveInLeft .4s ease-out;
                         animation-fill-mode: backwards;
                         box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
 
@@ -75,6 +75,7 @@
                         margin: 0 auto;
                         transition: all .4s;
                         white-space: nowrap;
+
                         &:hover {
                             background-color: $color-grey-dark;
                             color: $color-white;
@@ -166,7 +167,8 @@
             display: flex;
             // justify-content: space-between;
             align-items: start;
-            & > i {
+
+            &>i {
                 margin-top: -.3rem;
             }
 

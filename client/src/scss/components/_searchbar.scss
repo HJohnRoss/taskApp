@@ -7,6 +7,7 @@
     width: 15rem;
     transition: all .1s;
     max-height: 100%;
+    white-space: nowrap;
 
     &:visited {
         all: unset;

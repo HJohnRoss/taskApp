@@ -1,6 +1,7 @@
 import TopNav from "../../components/navbars/TopNav";
 import { useState, useEffect } from "react";
 import UserService from "../../components/services/UserService";
+import { Link, redirect } from "react-router-dom";
 
 
 const Login = () => {
@@ -42,7 +43,10 @@ const Login = () => {
 
     try {
       const res = await UserService.login(userData)
-      console.log(res)
+      if (res.status == 200){
+        window.location.href = "/home";
+      }
+      
     } catch (error) {
       console.log(error)
     }
@@ -76,19 +80,25 @@ const Login = () => {
           </div>
 
           <form className="login__container--form" onSubmit={handleSubmit}>
-            <h2 className="login__container--form--header">Login</h2>
-            <label className="login__container--form--label" htmlFor="userName">User Name:</label>
-            <input name="userName" type="text" className="login__container--form--input" onChange={handleChange} value={userData.userName} />
-
-            <label className="login__container--form--label" htmlFor="password">Password:</label>
-            <input name="password" type="password" className="login__container--form--input" onChange={handleChange} value={userData.password} />
-
+            <h2 className="login__container--form--header">Log In</h2>
+            <div className="form-control">
+              <label className="login__container--form--label" htmlFor="userName">User Name</label>
+              <input name="userName" type="text" className="login__container--form--input" onChange={handleChange} value={userData.userName} />
+            </div>
+            <div className="form-control">
+              <label className="login__container--form--label" htmlFor="password">Password</label>
+              <input name="password" type="password" className="login__container--form--input" onChange={handleChange} value={userData.password} />
+            </div>
+            <Link className="forgot-password">Forgot your password?</Link>
             {
               Object.keys(errors).length === 0 ?
-                <button className="login__container--form--btn">Login</button>
+                <button className="login__container--form--btn">Log In &rarr;</button>
                 :
-                <button className="login__container--form--btn--disabled" disabled>Login</button>
+                <button className="login__container--form--btn--disabled" disabled>Log In &rarr;</button>
             }
+            <Link className="no-account" to={"/register"}>
+              Don't have an account? 
+            </Link>
           </form>
         </div>
       </section>
