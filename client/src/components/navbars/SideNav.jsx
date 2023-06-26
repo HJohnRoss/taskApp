@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SideNav = () => {
+const SideNav = ({newBoardState, setNewBoardState}) => {
 
   const [navCollapse, setNavCollapse] = useState(true)
   // const [navWidth, setNavWidth] = useState(15)
@@ -30,7 +30,6 @@ const SideNav = () => {
 
   ]
 
-
   return (
     <>
       <nav className="sideNav" style={{ width: `${navCollapse ? "20" : "1"}rem` }}>
@@ -49,7 +48,10 @@ const SideNav = () => {
                 <i className="fa-regular fa-clipboard"></i>
               </Link>
             </li> */}
-
+            <li className="create-board">
+              <span>Create Board</span>
+              <i class="fa-solid fa-plus" onClick={() => setNewBoardState(!newBoardState)}></i>
+            </li>
 
             <li className="sideNav__list-item sideNav__list-dropdown">
               <Link className="sideNav__list-link" to={"/boards/1"}>Recent Boards <span className="sideNav__list-dropdown-arrow">&rsaquo;</span></Link>

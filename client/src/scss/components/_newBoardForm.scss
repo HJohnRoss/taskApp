@@ -1,0 +1,10 @@
+.NewBoardForm {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 5px;
+    z-index: 1000;
+    background-color: white;
+    transform: translate(50%, 10%);
+    box-shadow: 1rem 1rem 2rem rgba(167, 167, 167, 0.598);
+}

@@ -43,3 +43,15 @@
         background-color: antiquewhite;
     }
 }
+
+.fa-plus {
+    color: white;
+    background-color: #0073ea;
+    border-radius: 4px;
+    font-size: $font-size-mini;
+    padding: .5rem;
+    cursor: pointer;
+    &:hover {
+        background-color: #133774;
+    }
+}
