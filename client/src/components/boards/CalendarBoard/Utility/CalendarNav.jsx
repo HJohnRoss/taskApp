@@ -50,7 +50,7 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
     return (
         <div className='calendarNav'>
             <div>{currDate.currMonth}</div>
-            <SearchBar setTasks={setTasks} tasks={tasks} />
+            <SearchBar setTasks={setTasks} tasks={tasks} placeHolder={"Filter tasks"}/>
             {navState &&
                 <div className='change-date '>
                     <button onClick={resetDate} className='btn btn-dark btn-sm'>Today</button>

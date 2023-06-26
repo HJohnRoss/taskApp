@@ -10,9 +10,10 @@
 
     &--form {
       height: fit-content;
-      border: 2px solid $color-grey-dark;
+      border: 2px inset $color-grey-dark;
       border-radius: .5rem;
       padding: 5rem 2rem;
+      box-shadow: 1rem 1rem 2rem rgba(167, 167, 167, 0.598);
 
       &--header {
         color: $color-dark;

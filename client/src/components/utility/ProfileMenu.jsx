@@ -29,7 +29,7 @@ function ProfileMenu() {
 
     return (
         <div className="profileHolder">
-            <i class="fa-regular userNav fa-user" onClick={handleClick}></i>
+            <i className="fa-regular userNav fa-user" onClick={handleClick}></i>
             {menuState &&
                 <div className='profileMenu' ref={menuRef}>
                     <div className='profileMenu__header'>
@@ -43,19 +43,19 @@ function ProfileMenu() {
                             <div className='profileContent__cell--item'>
                                 <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
                                     <div>
-                                        <i class="fa-regular fa-user fa-2xs" style={{color: "white"}}></i>
+                                        <i className="fa-regular fa-user fa-2xs" style={{color: "white"}}></i>
                                         <div>My Profile</div>
                                     </div>
                                 </Link>
                                 <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
                                     <div>
-                                        <i class="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
+                                        <i className="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
                                         <div>Log out</div>
                                     </div>
                                 </Link>
                                 <Link to={"/"} className='profileContent__cell--link' style={{textDecoration: "none"}}>
                                     <div>
-                                        <i class="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
+                                        <i className="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
                                         <div>Log out</div>
                                     </div>
                                 </Link>
@@ -68,13 +68,13 @@ function ProfileMenu() {
                             <div className='profileContent__cell--item'>
                                 <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
                                     <div>
-                                        <i class="fa-solid fa-question" style={{color: "white"}}></i>
+                                        <i className="fa-solid fa-question" style={{color: "white"}}></i>
                                         <div>Get Help</div>
                                     </div>
                                 </Link>
                                 <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
                                     <div>
-                                    <i class="fa-regular fa-moon" style={{color: "white"}}></i>
+                                    <i className="fa-regular fa-moon" style={{color: "white"}}></i>
                                         <div>Change Theme</div>
                                     </div>
                                 </Link>

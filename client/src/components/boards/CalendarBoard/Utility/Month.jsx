@@ -113,6 +113,8 @@ function Month({ tasks, setActiveTaskIndex, activeTaskIndex, currDate, setUpdate
         setActiveTaskIndex(index);
     };
 
+    
+
     return (
         <tbody>
             {daysOfTheMonth.map((week, i) => (

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import BoardService from '../services/BoardService';
 import { useParams } from 'react-router-dom';
 
-function SearchBar({ tasks, setTasks }) {
+function SearchBar({ tasks, setTasks, placeHolder }) {
     const [query, setQuery] = useState('');
     const [queryOpen, setQueryOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
@@ -76,6 +76,7 @@ function SearchBar({ tasks, setTasks }) {
                 value={query}
                 onChange={handleChange}
                 onClick={() => setQueryOpen(true)}
+                placeholder={placeHolder}
             />
         </div>
     );

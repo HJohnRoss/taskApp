@@ -20,7 +20,6 @@ function TaskContainer(
     const [formSubmit, setFormSubmit] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
-        date: fullDate,
         description: "",
         boardIdd: id,
         isCompleted: false,
@@ -29,7 +28,7 @@ function TaskContainer(
     const [displayTaskInfoIndex, setDisplayTaskInfoIndex] = useState()
 
     const handleTaskClick = (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
         // setFormDate(prev => !prev)
         console.log(fullDate)
     }
@@ -44,21 +43,23 @@ function TaskContainer(
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData.date)
-        TaskService.create(formData)
+        console.log(fullDate)
+        TaskService.create({
+            ...formData,
+            date: fullDate
+        })
             .then(res => {
                 // console.log(res)
                 console.log(res.data)
                 setFormData({
                     boardIdd: id,
-                }) 
+                })
                 console.log(formData)
             })
             .catch(err => console.error(err))
         setSelectedTask(null)
-        setUpdateBoard(updateBoard+1)
+        setUpdateBoard(updateBoard + 1)
     }
-
 
     const displayTaskInfo = (index, task) => {
         setDisplayTaskInfoIndex(index)
@@ -66,13 +67,13 @@ function TaskContainer(
         setFormSubmit(!formSubmit)
     }
 
-
     const deleteTaskItem = (id) => {
         setDisplayTaskInfoIndex(null)
         TaskService.delete(id)
             .then(res => console.log(res))
             .catch(err => console.error(err))
-        setUpdateBoard(updateBoard+1)
+        setUpdateBoard(updateBoard + 1)
+        setSelectedTask(null)
     }
 
     const editTaskItem = (index, task) => {
@@ -100,7 +101,7 @@ function TaskContainer(
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-            
+
         };
     }, [displayTaskInfoIndex]);
 
@@ -158,7 +159,7 @@ function TaskContainer(
                             <input className='form-group--item form-group--item--title' type='text' name='title' placeholder='Add title and time' value={formData.title} onChange={(e) => handleFormChange(e)} />
                         </div>
                         <div className='form-group'>
-                            <input className='form-group--item' type='date' name='date'  value={fullDate} onChange={(e) => handleFormChange(e)} />
+                            <input className='form-group--item' type='date' name='date' value={fullDate} onChange={(e) => handleFormChange(e)} />
                         </div>
                         <div className='form-group'>
                             <textarea className='form-group--item form-group--item--description' placeholder='Add description' name='description' value={formData.description} onChange={(e) => handleFormChange(e)} />

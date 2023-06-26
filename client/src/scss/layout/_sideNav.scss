@@ -1,5 +1,5 @@
 .sideNav {
-  width: 15rem ;
+  width: 15rem;
   position: relative;
   // margin-top: 2rem;
   margin-right: 1rem;
@@ -8,7 +8,8 @@
   // bottom: 0;
   background-color: rgba($color-white, 0.1);
   border-radius: 0 1rem 1rem 0;
-  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);;
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  ;
   z-index: 99;
   padding: 0 1rem;
   transition: width .2s ease;
@@ -22,7 +23,7 @@
     border-top-right-radius: 50%;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 15%;
-  
+
     top: 0rem;
     right: 0rem;
 
@@ -42,6 +43,7 @@
     margin-top: 2rem;
     padding: 2rem 0;
     font-size: $font-size-secondary;
+
     &-search {
       border-radius: .5rem;
       display: flex;
@@ -121,5 +123,18 @@
     border-radius: .5rem;
     box-shadow: .2rem .2rem 1rem rgba($color-dark, 1);
     list-style: none;
+  }
+}
+
+.create-board {
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem .4rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  margin-bottom: 1px;
+
+  &:hover {
+    background-color: $color-grey-light;
   }
 }
