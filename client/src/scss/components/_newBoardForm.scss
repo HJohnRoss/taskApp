@@ -1,10 +1,63 @@
-.NewBoardForm {
+.newBoardForm {
     position: absolute;
-    width: 50vw;
-    height: 50vh;
+    width: 30rem;
     border-radius: 5px;
     z-index: 1000;
     background-color: white;
-    transform: translate(50%, 10%);
     box-shadow: 1rem 1rem 2rem rgba(167, 167, 167, 0.598);
+    padding: 2rem;
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+    }
+
+    &__boardType {
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem 0;
+
+        &--group {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        &--label {
+            font-size: $font-size-mini;
+            margin-left: 1rem;
+        }
+
+    }
+
+    &__label {
+        font-size: $font-size-mini;
+        margin-bottom: .5rem;
+    }
+
+    &__input {
+        border: 1px solid $color-grey-light;
+    }
+
+    &__cancel {
+        font-size: $font-size-small;
+        display: inline-block;
+        padding: .55rem 1.5rem;
+        border-radius: 4px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #dcdfec;
+        }
+    }
+
+    &__footer {
+        text-align: right;
+    }
 }
+
+.overlay {
+    background-color: rgba(black, 0.5);
+}
+

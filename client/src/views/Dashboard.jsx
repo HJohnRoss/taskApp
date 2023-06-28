@@ -12,32 +12,12 @@ const Dashboard = () => {
 
   const [newBoardState, setNewBoardState] = useState(false)
 
-  const formRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (formRef.current && !formRef.current.contains(event.target)) {
-        // Clear the form data when clicking outside the form
-        setNewBoardState(false)
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-
-    };
-  }, [newBoardState]);
-
   return (
     <>
       <TopNav />
       <main className="dashboard-content-wrapper" style={{ height: "90%" }}>
         {newBoardState &&
-          <div ref={formRef}>
-            <NewBoardForm />
-          </div>
+          <NewBoardForm newBoardState={newBoardState} setNewBoardState={setNewBoardState} />
         }
         <SideNav newBoardState={newBoardState} setNewBoardState={setNewBoardState} />
         <BoardHolder />
