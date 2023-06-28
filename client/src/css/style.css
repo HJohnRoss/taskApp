@@ -239,7 +239,6 @@
   text-decoration: none;
   border: 1px solid #D3D3D3;
   padding: 0.25rem 0;
-  width: 15rem;
   transition: all 0.1s;
   max-height: 100%;
   white-space: nowrap;
@@ -317,6 +316,9 @@
   align-items: center;
   white-space: nowrap;
 }
+.change-date > * {
+  margin-left: 5px;
+}
 .change-date__arrows > i:hover {
   background-color: #c5c7d0;
 }
@@ -325,6 +327,13 @@
   width: fit-content;
 }
 
+@media (min-width: 950px) {
+  .change-date {
+    box-shadow: none;
+    position: initial;
+    padding: 0;
+  }
+}
 .profileHolder {
   margin-left: 1.5vw;
   position: relative;
@@ -719,7 +728,7 @@
   margin-bottom: 2px;
   border-radius: 3px;
   background-color: rgb(66, 133, 244);
-  width: 7vw;
+  max-width: 5vw;
   padding: 0 0.25rem;
 }
 .task-container__tasks--item:hover {
@@ -806,13 +815,13 @@
   scroll-behavior: auto;
 }
 .board::-webkit-scrollbar-thumb {
-  background-color: #666;
+  background-color: #808080;
   /* Adjust the thumb color when hovering as needed */
   position: absolute;
 }
 .board::-webkit-scrollbar {
   width: 0;
-  height: 0;
+  height: 1rem;
   position: absolute;
   /* Adjust this value to match the width of the scrollbar in your browser */
 }

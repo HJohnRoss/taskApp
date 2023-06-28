@@ -10,14 +10,14 @@
     
 
     &::-webkit-scrollbar-thumb {
-        background-color: #666;
+        background-color: #808080;
         /* Adjust the thumb color when hovering as needed */
         position: absolute;
     }
 
     &::-webkit-scrollbar {
         width: 0;
-        height: 0;
+        height: 1rem;
         position: absolute;
         /* Adjust this value to match the width of the scrollbar in your browser */
     }
