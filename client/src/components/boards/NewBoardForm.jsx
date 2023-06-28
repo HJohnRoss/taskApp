@@ -1,7 +1,16 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 function NewBoardForm({ newBoardState, setNewBoardState }) {
     const formRef = useRef(null);
+
+    const [formData, setFormData] = useState({
+
+    })
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -21,7 +30,7 @@ function NewBoardForm({ newBoardState, setNewBoardState }) {
 
     return (
         <div className='overlay'>
-            <form className='newBoardForm' ref={formRef}>
+            <form className='newBoardForm' ref={formRef} onSubmit={handleSubmit}>
                 <div className='newBoardForm__close' onClick={() => setNewBoardState(!newBoardState)}><i class="fa-solid fa-xmark" ></i></div>
                 <h2 className='newBoardForm__title'>Create Board</h2>
                 <div className='form-group'>
