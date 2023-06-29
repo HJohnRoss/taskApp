@@ -21,9 +21,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     white-space: nowrap;
-    & > * {
+
+    #dark & {
+        background-color: #383b4a;
+        box-shadow: 1rem 1rem 2rem #4c5061;
+
+        &>button {
+            color: white;
+        }
+    }
+
+    &>* {
         margin-left: 5px;
     }
 
@@ -31,6 +40,14 @@
 
         &>i:hover {
             background-color: #c5c7d0;
+        }
+
+        #dark &>i {
+            color: white;
+        }
+
+        #dark &>i:hover {
+            background-color: black;
         }
     }
 }

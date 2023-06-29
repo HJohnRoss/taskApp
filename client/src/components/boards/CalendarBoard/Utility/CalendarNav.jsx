@@ -55,8 +55,6 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
             console.log(window.innerWidth)
             if (window.innerWidth > 950) {
                 setNavState(true)
-            }else if (window.innerWidth == 950 && navState == true){
-
             }
         };
 
@@ -71,7 +69,7 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
         <div className='calendarNav'>
             <SearchBar setTasks={setTasks} tasks={tasks} placeHolder={"Filter tasks"} />
             {navState &&
-                <div className='change-date '>
+                <div className='change-date' style={{backgroundColor: `${screenWidth >= 950 ? "transparent" : ""}`, boxShadow : `${screenWidth >= 950 ? "none" : ""}`}}>
                     <button onClick={resetDate} className='btn btn-dark btn-sm'>Today</button>
                     <div className='change-date__arrows'>
                         <i className="fa-solid fa-angle-left" onClick={prevMonth}></i>
@@ -86,7 +84,7 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
                 </div>
             }{
                 screenWidth < 950 &&
-                <i style={{ backgroundColor: `${navState ? "#dff0ff" : ""}`, transform: `${navState ? "scale(0.95)" : ""}` }} className="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
+                <i style={{ backgroundColor: `${navState ? "black" : ""}`, transform: `${navState ? "scale(0.95)" : ""}` }} className="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
             }
         </div>
     )

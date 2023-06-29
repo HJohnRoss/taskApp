@@ -33,7 +33,7 @@
       color: $color-white;
     }
 
-    #dark &:hover{
+    #dark &:hover {
       background-color: black;
     }
 
@@ -89,6 +89,8 @@
       transition: .5s ease;
       border-radius: 0 1rem;
       margin-bottom: 2px;
+      white-space: nowrap;
+
 
       &:hover,
       &:active {
@@ -123,7 +125,13 @@
         top: -.3rem;
         font-size: 2rem;
         color: black;
+
+        #dark &{
+          color: white;
+        }
+
       }
+
     }
 
   }
@@ -144,6 +152,7 @@
 
     #dark & {
       background-color: white;
+      color: black;
     }
   }
 }
