@@ -14,7 +14,7 @@
   <div>
     <h2>Some Images From my site !</h2>
     <div>
-      <img style="width: 200px;" src="https://i.imgur.com/dYcnws9.pn)" alt="Dashboard"/>
+      <img style="width: 200px;" src="https://i.imgur.com/dYcnws9.png" alt="Dashboard"/>
       <img style="width: 200px;" src="https://i.imgur.com/gOHrnMm.png"alt="Create-Board"/>
       <img style="width: 200px;" src="https://i.imgur.com/u31tJnA.png" alt="Login"/>
       <img style="width: 200px;" src="https://i.imgur.com/lSvwh8N.png" alt="Taskboard"/>
