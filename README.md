@@ -45,7 +45,7 @@
             Node.js
             </td>
             <td>
-            Bootstrap
+            SASS
             </td>
           </tr>
           <tr>
@@ -56,7 +56,7 @@
             Spring-boot
             </td>
             <td>
-            Material-Ui
+            SASS
             </td>
           </tr>
         </tbody>
