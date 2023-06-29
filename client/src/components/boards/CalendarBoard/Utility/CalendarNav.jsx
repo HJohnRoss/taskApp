@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchBar from '../../../utility/SearchBar'
 
 const monthToNum = {
@@ -7,7 +7,7 @@ const monthToNum = {
 
 function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
 
-    const [navState, setNavState] = useState(false)
+    const [navState, setNavState] = useState(window.innerWidth > 950 ? true : false)
 
     const nextMonth = () => {
         if (parseInt(currDate.currMonth) + 1 > 12) {
@@ -47,10 +47,29 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
         })
     }
 
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+            console.log(window.innerWidth)
+            if (window.innerWidth > 950) {
+                setNavState(true)
+            }else if (window.innerWidth == 950 && navState == true){
+
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <div className='calendarNav'>
-            <div>{currDate.currMonth}</div>
-            <SearchBar setTasks={setTasks} tasks={tasks} placeHolder={"Filter tasks"}/>
+            <SearchBar setTasks={setTasks} tasks={tasks} placeHolder={"Filter tasks"} />
             {navState &&
                 <div className='change-date '>
                     <button onClick={resetDate} className='btn btn-dark btn-sm'>Today</button>
@@ -65,8 +84,10 @@ function CalendarNav({ currDate, setCurrDate, setTasks, tasks }) {
                         <option value="Day">Day</option>
                     </select>
                 </div>
+            }{
+                screenWidth < 950 &&
+                <i style={{ backgroundColor: `${navState ? "#dff0ff" : ""}`, transform: `${navState ? "scale(0.95)" : ""}` }} className="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
             }
-            <i style={{ backgroundColor: `${!navState ? "#dff0ff" : ""}`, transform: `${!navState ? "scale(0.95)" : ""}` }} className="fa-solid fa-arrow-turn-down" onClick={() => setNavState(!navState)} ></i>
         </div>
     )
 }

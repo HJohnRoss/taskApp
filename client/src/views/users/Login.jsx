@@ -2,7 +2,7 @@ import TopNav from "../../components/navbars/TopNav";
 import { useState, useEffect } from "react";
 import UserService from "../../components/services/UserService";
 import { Link, redirect } from "react-router-dom";
-
+import { useCookies } from "react-cookie";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -11,7 +11,7 @@ const Login = () => {
   })
 
   const [errors, setErrors] = useState({});
-
+  const [cookies, setCookie, removeCookie] = useCookies(['userId']);
 
   const validateForm = () => {
     let errors = {};
@@ -43,10 +43,10 @@ const Login = () => {
 
     try {
       const res = await UserService.login(userData)
-      if (res.status == 200){
-        window.location.href = "/home";
+      if (res.status == 200) {
+        setCookie("userId", res.data.id)
+        window.location.href = '/home';
       }
-      
     } catch (error) {
       console.log(error)
     }
@@ -70,7 +70,7 @@ const Login = () => {
     <div className="center">
 
       <section className="login">
-        <TopNav />
+      <h1 className="login__header">Streamline Your Tasks, Unleash Your Potential!</h1>
 
         <div className="login__container">
 

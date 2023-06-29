@@ -21,7 +21,6 @@
     display: flex;
 }
 
-
 .fa-angle-down, .fa-angle-right, .fa-angle-left {
     cursor: pointer;
 }
@@ -33,6 +32,15 @@
     &:hover,&:active {
         background-color: #c5c7d0;
         cursor: pointer;
+    }
+
+    #dark & {
+        color: white;
+
+        &:hover,&:active {
+            background-color: black;
+            cursor: pointer;
+        }
     }
 }
 
@@ -49,7 +57,9 @@
     background-color: #0073ea;
     border-radius: 4px;
     font-size: $font-size-mini;
-    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     &:hover {
         background-color: #133774;

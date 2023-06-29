@@ -103,15 +103,13 @@
     }
 
     &__tasks {
-
         &--holder {
             position: relative;
         }
-
         height: fit-content;
 
-        &--item {
 
+        &--item {
             &:hover {
                 opacity: .90;
             }
@@ -127,7 +125,7 @@
             margin-bottom: 2px;
             border-radius: 3px;
             background-color: $color-primary;
-            width: 7vw;
+            max-width: 7vw;
             padding: 0 .25rem;
 
             &:hover {

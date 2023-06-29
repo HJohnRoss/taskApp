@@ -2,4 +2,14 @@
     margin: 2rem 0 0 0;
     display: flex;
     justify-content: space-between;
+    max-height: 90.3vh;
+}
+
+#light {
+    
+}
+
+#dark .dashboard{
+    // min-height: 100vh;
+    background-color: rgba($color-dark, .9);
 }

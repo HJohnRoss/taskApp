@@ -1,5 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+
+import { ThemeContext } from '../../context/ThemeContext'
 
 function ProfileMenu() {
 
@@ -23,9 +25,11 @@ function ProfileMenu() {
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-            
+
         };
     }, [setMenuState]);
+
+    const {theme, toggleTheme} = useContext(ThemeContext)
 
     return (
         <div className="profileHolder">
@@ -41,21 +45,15 @@ function ProfileMenu() {
                                 Account
                             </h6>
                             <div className='profileContent__cell--item'>
-                                <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
+                                <Link className='profileContent__cell--link' style={{ textDecoration: "none" }}>
                                     <div>
-                                        <i className="fa-regular fa-user fa-2xs" style={{color: "white"}}></i>
+                                        <i className="fa-regular fa-user fa-2xs" style={{ color: "white" }}></i>
                                         <div>My Profile</div>
                                     </div>
                                 </Link>
-                                <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
+                                <Link to={"/"} className='profileContent__cell--link' style={{ textDecoration: "none" }}>
                                     <div>
-                                        <i className="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
-                                        <div>Log out</div>
-                                    </div>
-                                </Link>
-                                <Link to={"/"} className='profileContent__cell--link' style={{textDecoration: "none"}}>
-                                    <div>
-                                        <i className="fa-solid fa-arrow-right-from-bracket" style={{color: "white"}}></i>
+                                        <i className="fa-solid fa-arrow-right-from-bracket" style={{ color: "white" }}></i>
                                         <div>Log out</div>
                                     </div>
                                 </Link>
@@ -66,15 +64,21 @@ function ProfileMenu() {
                                 Other
                             </h6>
                             <div className='profileContent__cell--item'>
-                                <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
+                                <Link className='profileContent__cell--link' style={{ textDecoration: "none" }}>
                                     <div>
-                                        <i className="fa-solid fa-question" style={{color: "white"}}></i>
+                                        <i className="fa-solid fa-gear" style={{ color: "white" }}></i>
+                                        <div>Config Settings</div>
+                                    </div>
+                                </Link>
+                                <Link className='profileContent__cell--link' style={{ textDecoration: "none" }}>
+                                    <div>
+                                        <i className="fa-solid fa-question" style={{ color: "white" }}></i>
                                         <div>Get Help</div>
                                     </div>
                                 </Link>
-                                <Link className='profileContent__cell--link' style={{textDecoration: "none"}}>
+                                <Link className='profileContent__cell--link' style={{ textDecoration: "none" }} onClick={toggleTheme}>
                                     <div>
-                                    <i className="fa-regular fa-moon" style={{color: "white"}}></i>
+                                        <i className="fa-regular fa-moon" style={{ color: "white" }}></i>
                                         <div>Change Theme</div>
                                     </div>
                                 </Link>

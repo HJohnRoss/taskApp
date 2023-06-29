@@ -50,7 +50,7 @@ const SideNav = ({newBoardState, setNewBoardState}) => {
             </li> */}
             <li className="create-board">
               <span>Create Board</span>
-              <i class="fa-solid fa-plus" onClick={() => setNewBoardState(!newBoardState)}></i>
+              <i className="fa-solid fa-plus" onClick={() => setNewBoardState(!newBoardState)}></i>
             </li>
 
             <li className="sideNav__list-item sideNav__list-dropdown">
