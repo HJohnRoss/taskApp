@@ -14,11 +14,11 @@
   <div>
     <h2>Some Images From my site !</h2>
     <div>
-      <img style="width: 200px;" src="https://media.licdn.com/dms/image/C562DAQGPcP6tIm6j4A/profile-treasury-image-shrink_800_800/0/1678327462163?e=1680228000&v=beta&t=9f4n2-0Tski0gi-kN46Fs7LMunEaPgyKZQDFQ3mod7c" alt="Dashboard"/>
-      <img style="width: 200px;" src="https://media.licdn.com/dms/image/C562DAQFXEP8Pofbdeg/profile-treasury-image-shrink_800_800/0/1678327533130?e=1680228000&v=beta&t=RKX_spIJZAoToyH6hxryHvQRoI-sDblwWp1DNxo4o3Y" alt="Create-Board"/>
-      <img style="width: 200px;" src="https://media.licdn.com/dms/image/C562DAQFBOZRZVL9GIg/profile-treasury-image-shrink_800_800/0/1678327563434?e=1680228000&v=beta&t=zRnrYNmXeISOU43N55arJRW_4n-X9fRjIsx7B1sdTPE" alt="Login"/>
+      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Dashboard"/>
+      <img style="width: 200px;" src="https://imgur.com/lSvwh8N"alt="Create-Board"/>
+      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Login"/>
       <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Taskboard"/>
-      <img style="width: 200px;" src="https://media.licdn.com/dms/image/C562DAQFsYcw6I0Hu0w/profile-treasury-image-shrink_800_800/0/1678327599348?e=1680228000&v=beta&t=FV7z7Yd-ebcaic0HiwC8sd_M4mhJcz9EihaWM7yvcJI" alt="DarkMode"/>
+      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="DarkMode"/>
     </div>
     <h2>Tech-Stack</h2>
     <div>
