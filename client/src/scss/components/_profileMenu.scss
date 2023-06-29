@@ -3,21 +3,39 @@
     position: relative;
 }
 
-.profileMenu  {
+.profileMenu {
     margin-top: 1.4vh;
     border-radius: .4rem;
     position: absolute;
-    width:25vw;
+    width: 25vw;
     min-width: 20rem;
     // height: 25rem;
     right: 0;
-    background-color: #24262f;
+    
 
     &__header {
         padding: 1rem;
-        border-bottom: 1px solid $color-white;
         font-weight: lighter;
     }
+
+    #light &__header {
+        border-bottom: 1px solid $color-white;
+    }
+
+    #dark &__header {
+        border-bottom: 1px solid #24262f;
+    }
+}
+
+#light .profileMenu {
+    background-color: #24262f;
+    color: $color-white;
+}
+
+
+#dark .profileMenu{
+    background-color: $color-white;
+    color: #24262f;
 }
 
 .profileContent {
@@ -26,46 +44,68 @@
     height: fit-content;
     &__cell {
         width: 50%;
-        
-        &:last-child {
-            
-        }
-        
+
+        &:last-child {}
+
         &-header {
             margin-left: .5rem;
-            color: #9699a6;
             margin-bottom: 1rem;
         }
+
         &--item {
             width: 100%;
 
-            &:hover {
-                
-            }
+            &:hover {}
         }
 
-        &--link > div{
+        &--link>div {
             width: 100%;
             display: flex;
             align-items: center;
             text-decoration: none;
             white-space: nowrap;
-            
+
 
             &:hover {
                 background-color: rgba(54, 71, 101, 0.438);
             }
-            
-            & > i {
+
+            &>i {
                 font-size: 1rem;
+
             }
 
-            & > div {
+            #light & > i {
+                color: $color-white !important;
+            }
+
+            #dark & > i {
+                color: #24262f !important;
+            }
+
+            &>div {
                 font-size: 1rem;
-                color: $color-white;
                 text-decoration: none;
+            }
+
+            #light & > div {
+                color: $color-white;
+            }
+
+            #dark & > div {
+                color: #24262f;
             }
         }
 
     }
+}
+
+#light .profileContent{
+    color: $color-white;
+}
+
+#dark .profileContent{
+    border-radius: 4rem;
+    color: #24262f;
+    background-color: $color-white;
 }

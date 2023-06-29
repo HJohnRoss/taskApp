@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [newBoardState, setNewBoardState] = useState(false)
 
   return (
-    <>
+    <div className="dashboard">
       <TopNav />
       <main className="dashboard-content-wrapper" style={{ height: "90%" }}>
         {newBoardState &&
@@ -22,7 +22,7 @@ const Dashboard = () => {
         <SideNav newBoardState={newBoardState} setNewBoardState={setNewBoardState} />
         <BoardHolder />
       </main>
-    </>
+    </div>
   );
 };
 

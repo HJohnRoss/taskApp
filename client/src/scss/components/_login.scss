@@ -1,10 +1,19 @@
 .login {
 
+  background-color: white;
+  &__header {
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    box-shadow: 3rem 3rem 5rem rgba(167, 167, 167, 0.598);
+    background-image: linear-gradient(to right, green, blue);
+  }
+
   &__container {
     display: flex;
     justify-content: center;
     // align-items: center;
-    padding-top: 20vh;
+    padding-top: 10vh;
 
     &--form {
       height: fit-content;
@@ -47,6 +56,7 @@
         transition: .3s all;
         font-size: $font-size-small;
         color: white;
+
         &:hover {
           box-shadow: .2rem .2rem .2rem .1rem rgba($color-blue-light, .1);
           // margin-top: -.2rem;
@@ -76,20 +86,22 @@
   font-size: .9rem;
   width: fit-content;
   margin-left: auto;
-  border-radius: .25rem;;
-    &:hover {
-      background-color: rgb(244, 246, 253);
-    }
+  border-radius: .25rem;
+  ;
+
+  &:hover {
+    background-color: rgb(244, 246, 253);
+  }
 }
 
 .form-control {
   border: none;
 }
 
-.existing-account, .no-account {
+.existing-account,
+.no-account {
   display: block;
-  padding: 1rem .25rem 0 ;
+  padding: 1rem .25rem 0;
   font-size: .9rem;
   // text-align: right;
 }
-

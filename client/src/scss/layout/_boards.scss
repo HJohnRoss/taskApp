@@ -29,3 +29,12 @@
     }
 
 }
+
+#light .board{
+    background-color: white;
+}
+
+#dark .board{
+    background-color: $color-dark;
+    color: $color-white;
+}

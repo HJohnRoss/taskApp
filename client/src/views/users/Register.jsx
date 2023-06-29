@@ -58,7 +58,7 @@ const Register = () => {
         const res = await UserService.createRegister(userData);
         if (res.status == 200) {
           setCookie("userId", res.data.id)
-          // window.location.href = '/';
+          window.location.href = '/home';
         }
       } catch (error) {
         setErrors({
@@ -84,10 +84,9 @@ const Register = () => {
     <div className="center">
 
       <section className="login">
-        <TopNav />
+        <h1 className="login__header">Streamline Your Tasks, Unleash Your Potential!</h1>
 
         <div className="login__container">
-
 
           <div className="login__container--errors">
             {errors.response && errors.response}
