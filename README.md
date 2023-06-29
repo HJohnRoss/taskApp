@@ -14,11 +14,11 @@
   <div>
     <h2>Some Images From my site !</h2>
     <div>
-      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Dashboard"/>
-      <img style="width: 200px;" src="https://imgur.com/lSvwh8N"alt="Create-Board"/>
-      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Login"/>
+      <img style="width: 200px;" src="https://i.imgur.com/dYcnws9.pn)" alt="Dashboard"/>
+      <img style="width: 200px;" src="https://i.imgur.com/gOHrnMm.png"alt="Create-Board"/>
+      <img style="width: 200px;" src="https://i.imgur.com/u31tJnA.png" alt="Login"/>
       <img style="width: 200px;" src="https://i.imgur.com/lSvwh8N.png" alt="Taskboard"/>
-      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="DarkMode"/>
+      <img style="width: 200px;" src="https://i.imgur.com/gybQMTm.png" alt="DarkMode"/>
     </div>
     <h2>Tech-Stack</h2>
     <div>
