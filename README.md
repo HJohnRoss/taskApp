@@ -17,7 +17,7 @@
       <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Dashboard"/>
       <img style="width: 200px;" src="https://imgur.com/lSvwh8N"alt="Create-Board"/>
       <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Login"/>
-      <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="Taskboard"/>
+      <img style="width: 200px;" src="[https://imgur.com/lSvwh8N](https://i.imgur.com/lSvwh8N.png)" alt="Taskboard"/>
       <img style="width: 200px;" src="https://imgur.com/lSvwh8N" alt="DarkMode"/>
     </div>
     <h2>Tech-Stack</h2>
