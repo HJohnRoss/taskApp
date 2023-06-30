@@ -50,13 +50,13 @@
           </tr>
           <tr>
             <td>
-            CSS
+            Bootstrap
             </td>
             <td>
             Spring-boot
             </td>
             <td>
-            SASS
+            Axios
             </td>
           </tr>
         </tbody>
